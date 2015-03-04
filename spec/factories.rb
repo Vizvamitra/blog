@@ -7,4 +7,9 @@ FactoryGirl.define do
     sequence(:name){|n| "User #{n}"}
   end
 
+  factory :post do
+    sequence(:title){|n| "Title #{n}"}
+    sequence(:body){|n| "## Post #{n}"}
+  end
+
 end
