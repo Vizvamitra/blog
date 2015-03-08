@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
 
   describe 'validations' do
-    include_examples 'validates presence of', :name
-    include_examples 'validates uniqueness of', :name
+    it{ should validate_presence_of(:name) }
+    it{ should validate_uniqueness_of(:name) }
   end
 
 end
