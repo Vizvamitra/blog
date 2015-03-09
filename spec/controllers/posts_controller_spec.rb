@@ -9,4 +9,13 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
+  describe "GET show" do
+    let(:post){ create(:post, :published) }
+
+    it "assigns @post" do
+      get :show, id: post.id
+      expect(assigns(:post)).to eq post
+    end
+  end
+
 end
