@@ -20,11 +20,20 @@ RSpec.describe PostsController, :type => :controller do
 
   describe "GET new" do
     before(:each){ sign_in(create(:user)) }
-    
+
     it "assigns @post" do
       get :new
       expect(assigns(:post)).to be_a Post
       expect(assigns(:post)).to be_a_new_record
+    end
+  end
+
+  describe "POST create" do
+    before(:each){ sign_in(create(:user)) }
+
+    it "assigns @post" do
+      get :new
+      expect(assigns(:post)).not_to be_nil
     end
   end
 

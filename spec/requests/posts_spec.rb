@@ -45,7 +45,7 @@ RSpec.describe "Posts", type: :request do
     let(:request){ ->{ get new_post_path} }
     subject{ response }
 
-    context 'for signed in user' do
+    describe 'for signed in user' do
       before(:each) do
         sign_in
         request.call
@@ -55,7 +55,44 @@ RSpec.describe "Posts", type: :request do
       it{ should render_template('posts/new') }
     end
 
-    context 'for guest' do
+    describe 'for guest' do
+      before(:each){ request.call }
+
+      it{ should have_http_status(302) }
+    end
+  end
+
+
+  describe 'POST /posts' do
+    let(:request){ ->{post posts_path, post: params} }
+    subject{ response }
+
+    describe 'for signed in user' do
+      before(:each) do
+        sign_in
+        request.call
+      end
+
+      context 'when post params are valid' do
+        let(:params){attributes_for(:post)}
+
+        it{ should redirect_to(posts_path) }
+
+        it 'creates a new post' do
+          post = Post.last
+          params.each{ |k,v| expect(post[k]).to eq v }
+        end
+      end
+
+      context 'when post params are invalid' do
+        let(:params){ attributes_for(:invalid_post) }
+
+        it{ should render_template('posts/new') }
+      end
+    end
+
+    describe 'for guest' do
+      let(:params){ attributes_for(:post) }
       before(:each){ request.call }
 
       it{ should have_http_status(302) }
