@@ -41,4 +41,25 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
+  describe 'GET /posts/new' do
+    let(:request){ ->{ get new_post_path} }
+    subject{ response }
+
+    context 'for signed in user' do
+      before(:each) do
+        sign_in
+        request.call
+      end
+
+      it{ should have_http_status(:success) }
+      it{ should render_template('posts/new') }
+    end
+
+    context 'for guest' do
+      before(:each){ request.call }
+
+      it{ should have_http_status(302) }
+    end
+  end
+
 end

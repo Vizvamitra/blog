@@ -39,4 +39,8 @@ class User
 
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  def self.serialize_into_session(record)
+    [record.id.to_s, record.authenticatable_salt]
+  end
 end
