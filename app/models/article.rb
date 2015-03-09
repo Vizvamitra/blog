@@ -1,4 +1,4 @@
-class Post
+class Article
   include Mongoid::Document
   include Mongoid::Timestamps
   field :author, type: String
@@ -13,5 +13,5 @@ class Post
 
   belongs_to :user, primary_key: :name, foreign_key: :author
 
-  validates_presence_of :title, :body
+  validates_presence_of :title, :body, :author
 end

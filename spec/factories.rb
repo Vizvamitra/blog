@@ -7,9 +7,10 @@ FactoryGirl.define do
     sequence(:name){|n| "User #{n}"}
   end
 
-  factory :post do
+  factory :article do
     sequence(:title){|n| "Title #{n}"}
     sequence(:body){|n| "## Post #{n}"}
+    author { create(:user).id }
 
     trait(:published){ published true; published_at DateTime.yesterday }
     trait(:planned){ published true; published_at DateTime.tomorrow }
@@ -17,7 +18,7 @@ FactoryGirl.define do
     trait(:draft){ published false }
     trait(:not_published){ published false }
 
-    factory(:invalid_post) do
+    factory(:invalid_article) do
       title nil
     end
   end
