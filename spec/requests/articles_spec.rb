@@ -69,10 +69,15 @@ RSpec.describe "Articles", type: :request do
       let(:request){ ->{patch article_path(create(:article))} }
       it_behaves_like 'redirects to login page'
     end
+
+    describe 'DELETE /articles/:id' do
+      let(:request){ ->{delete article_path(create(:article))} }
+      it_behaves_like 'redirects to login page'
+    end
   end
 
 
-  
+  #TODO: change redirect specs to drafts/show page or smth  
   describe 'for signed in users' do
     before(:each) do
       @user = create(:user)
@@ -158,6 +163,27 @@ RSpec.describe "Articles", type: :request do
       context 'if article\'s author is another user' do
         let(:article){ create(:article) }
         let(:params){attributes_for(:article).except(:author)}
+
+        it{ should have_http_status(403) }
+      end
+    end
+
+
+    describe 'DELETE /articles/:id' do
+      let(:request){ ->{delete article_path(article)} }
+
+      context 'if articles\'s author is current user' do
+        let(:article){ create(:article, author: @user.id) }
+
+        it{ should redirect_to(articles_path) }
+        
+        it 'destroys article' do
+          expect(Article.where(id: article.id)).to be_empty
+        end
+      end
+
+      context 'if article\'s author is another user' do
+        let(:article){ create(:article) }
 
         it{ should have_http_status(403) }
       end

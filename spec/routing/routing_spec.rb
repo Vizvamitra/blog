@@ -12,5 +12,6 @@ RSpec.describe "routes", type: :routing do
     expect(post('/articles')).to route_to('articles#create')
     expect(get('/articles/5/edit')).to route_to('articles#edit', id: '5')
     expect(patch('/articles/5')).to route_to('articles#update', id: '5')
+    expect(delete('/articles/5')).to route_to('articles#destroy', id: '5')
   end
 end
