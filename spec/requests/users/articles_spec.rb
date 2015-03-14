@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users/Articles' do
+RSpec.describe 'CurrentUser/Articles' do
   
   shared_examples 'redirects to login page' do
     it{ should have_http_status(302) }
@@ -70,10 +70,10 @@ RSpec.describe 'Users/Articles' do
       let(:request){ ->{ get current_user_article_path(id)} }
       
       context 'when article existsd' do
-        let(:id){ create(:article, author: @user.name).id }
+        let(:id){ create(:article, author: @user).id }
 
         it { should have_http_status(:success) }
-        it { should render_template('users/articles/show') }
+        it { should render_template('current_user/articles/show') }
       end
 
       context 'when article doesn\'t exist' do
@@ -88,7 +88,7 @@ RSpec.describe 'Users/Articles' do
       let(:request){ ->{ get new_current_user_article_path} }
 
       it{ should have_http_status(:success) }
-      it{ should render_template('users/articles/new') }
+      it{ should render_template('current_user/articles/new') }
     end
 
 
@@ -109,7 +109,7 @@ RSpec.describe 'Users/Articles' do
       context 'when article params are invalid' do
         let(:params){ attributes_for(:invalid_article) }
 
-        it{ should render_template('users/articles/new') }
+        it{ should render_template('current_user/articles/new') }
       end
     end
 
@@ -118,10 +118,10 @@ RSpec.describe 'Users/Articles' do
       let(:request){ ->{ get edit_current_user_article_path(id)} }
 
       context 'when article exists' do
-        let(:id){ create(:article, author: @user.name).id }
+        let(:id){ create(:article, author: @user).id }
 
         it{ should have_http_status(:success) }
-        it{ should render_template('users/articles/edit') }
+        it{ should render_template('current_user/articles/edit') }
       end
 
       context 'when article doesn\'t exist' do
@@ -136,7 +136,7 @@ RSpec.describe 'Users/Articles' do
       let(:request){ ->{patch current_user_article_path(article.id), article: params} }
       
       context 'when article params are valid' do
-        let(:article){ create(:article, author: @user.name) }
+        let(:article){ create(:article, author: @user) }
         let(:params){ {title: 'test', body: '123'} }
 
         it{ should redirect_to(current_user_article_path(article.id)) }
@@ -148,10 +148,10 @@ RSpec.describe 'Users/Articles' do
       end
 
       context 'when article params are invalid' do
-        let(:article){ create(:article, author: @user.name) }
+        let(:article){ create(:article, author: @user) }
         let(:params){ {title: nil}}
 
-        it{ should render_template('users/articles/edit') }
+        it{ should render_template('current_user/articles/edit') }
       end
 
       context 'when article doesn\'t exist' do
@@ -167,7 +167,7 @@ RSpec.describe 'Users/Articles' do
       let(:request){ ->{delete current_user_article_path(article.id)} }
 
       context 'if article exists' do
-        let(:article){ create(:article, author: @user.name) }
+        let(:article){ create(:article, author: @user) }
 
         it{ should redirect_to(current_user_articles_path) }
         it('destroys article'){ expect(Article.where(id: article.id)).to be_empty }

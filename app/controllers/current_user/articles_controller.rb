@@ -1,4 +1,4 @@
-class Users::ArticlesController < ApplicationController
+class CurrentUser::ArticlesController < ApplicationController
   respond_to :html
 
   before_action :authenticate_user!

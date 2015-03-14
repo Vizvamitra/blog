@@ -40,7 +40,7 @@ class User
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  has_many :articles, primary_key: :name, foreign_key: :author
+  has_many :articles
 
   def self.serialize_into_session(record)
     [record.id.to_s, record.authenticatable_salt]

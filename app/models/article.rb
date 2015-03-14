@@ -11,7 +11,7 @@ class Article
 
   include Publishable
 
-  belongs_to :user, primary_key: :name, foreign_key: :author
+  belongs_to :author, class_name: 'User'
 
   validates_presence_of :title, :body, :author
 end

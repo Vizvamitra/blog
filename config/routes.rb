@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :articles
 
-  namespace :users, as: 'current_user' do
+  namespace :current_user, path: 'users' do
     resources :articles, path: 'current/articles'
   end
   # The priority is based upon order of creation: first created -> highest priority.

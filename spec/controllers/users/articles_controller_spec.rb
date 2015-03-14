@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Users::ArticlesController, :type => :controller do
+RSpec.describe CurrentUser::ArticlesController, :type => :controller do
 
   before(:each){ sign_in(@user = create(:user)) }
-  let(:articles){ create_list(:article, 5, author: @user.name) }
+  let(:articles){ create_list(:article, 5, author: @user) }
 
   describe "GET index" do
     it "assigns @articles" do
