@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   resources :articles
+
+  namespace :users, as: 'current_user' do
+    resources :articles, path: 'current/articles'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

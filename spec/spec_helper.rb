@@ -21,8 +21,10 @@ RSpec.configure do |config|
     DatabaseCleaner[:mongoid].strategy = :truncation
   end
 
-  config.before(:each) do
-    DatabaseCleaner.clean
+  config.after(:each) do
+    #DatabaseCleaner.clean
+    Article.delete_all
+    User.delete_all
   end
   
   # rspec-expectations config goes here. You can use an alternate
