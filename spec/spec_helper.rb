@@ -25,6 +25,7 @@ RSpec.configure do |config|
     #DatabaseCleaner.clean
     Article.delete_all
     User.delete_all
+    Tag.delete_all
   end
   
   # rspec-expectations config goes here. You can use an alternate

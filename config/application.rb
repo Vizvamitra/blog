@@ -16,6 +16,9 @@ Bundler.require(*Rails.groups)
 
 module Blog
   class Application < Rails::Application
+
+    config.paths.add 'app/jobs', eager_load: true
+    config.paths.add 'app/services', eager_load: true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

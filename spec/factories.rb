@@ -23,4 +23,9 @@ FactoryGirl.define do
     end
   end
 
+  factory :tag do
+    sequence(:_id){|n| "tag_#{n}"}
+    value { rand(1..10) }
+  end
+
 end

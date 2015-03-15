@@ -14,4 +14,9 @@ class Article
   belongs_to :author, class_name: 'User'
 
   validates_presence_of :title, :body, :author
+
+  after_save(if: :tags_changed?) do
+    ::RecalculateTagsJob.perform_later
+  end
+
 end
