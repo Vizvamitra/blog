@@ -1,13 +1,15 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   field :author, type: String
   field :title, type: String
+  field :body, type: String
+  field :tags, type: Array
   field :published, type: Boolean
   field :published_at, type: DateTime
   field :expires_at, type: DateTime
-  field :tags, type: Array
-  field :body, type: String
+  slug  :title, history: true
 
   include Publishable
 

@@ -21,12 +21,12 @@ class CurrentUser::ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     @article.save
-    respond_with @article, location: current_user_article_path(@article.id)
+    respond_with @article, location: redirect_path
   end
 
   def update
     @article.update_attributes(article_params)
-    respond_with @article, location: current_user_article_path(@article.id)
+    respond_with @article, location: redirect_path
   end
 
   def destroy
@@ -44,5 +44,7 @@ class CurrentUser::ArticlesController < ApplicationController
     @article = current_user.articles.find(params[:id])
   end
 
-
+  def redirect_path
+    current_user_article_path(@article) if @article.persisted?
+  end
 end

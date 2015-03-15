@@ -139,7 +139,7 @@ RSpec.describe 'CurrentUser/Articles' do
         let(:article){ create(:article, author: @user) }
         let(:params){ {title: 'test', body: '123'} }
 
-        it{ should redirect_to(current_user_article_path(article.id)) }
+        it{ should redirect_to(current_user_article_path(article.reload)) }
 
         it 'updates article' do
           article.reload
