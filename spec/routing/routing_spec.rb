@@ -8,6 +8,7 @@ RSpec.describe "routes", type: :routing do
   it 'articles' do
     expect(get('/articles')).to route_to('articles#index')
     expect(get('/articles/5')).to route_to('articles#show', id: '5')
+    expect(get('/articles/feed')).to route_to('articles#feed', format: :rss)
   end
 
   describe 'current_user' do

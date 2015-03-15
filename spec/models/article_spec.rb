@@ -8,6 +8,16 @@ RSpec.describe Article, :type => :model do
     it{ should validate_presence_of(:author) }
   end
 
+  describe 'scopes' do
+    describe 'recent' do
+      it 'orders articles by published_at descending' do
+        create(:article, :published, published_at: Time.now)
+        create(:article, :published, published_at: Date.yesterday)
+        expect(Article.recent).to be_ordered_by(:published_at, :desc)
+      end
+    end
+  end
+
   describe 'callbacks' do
 
     describe 'after_save' do

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   root 'articles#index'
 
-  resources :articles
+  resources :articles do
+    collection do
+      get 'feed', to: 'articles#feed', as: 'feed', defaults: {format: :rss}, constraints: {format: :rss}
+    end
+  end
 
   namespace :current_user, path: 'users' do
     resources :articles, path: 'current/articles'

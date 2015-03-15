@@ -5,12 +5,22 @@ RSpec.describe "Articles", type: :request do
   subject{ response }
   before(:each){ request.call }
 
+
   describe 'GET /articles' do
     let(:request){ ->{get articles_path} }
 
     it{ should have_http_status(:success) }
     it{ should render_template('articles/index') }
   end
+
+
+  describe 'GET /articles/feed' do
+    let(:request){ ->{get feed_articles_path} }
+
+    it{ should have_http_status(:success) }
+    it{ should render_template('articles/feed') }
+  end
+
 
   describe 'GET /articles/:id' do
     let(:published_article){ create(:article, :published) }
