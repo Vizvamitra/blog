@@ -17,6 +17,9 @@ gem 'kaminari'
 gem 'publishable', github: 'tvch1/publishable'
 gem 'mongoid-slug', '~> 4.0.0'
 
+gem 'haml', '~> 4.0.6'
+gem 'bootstrap-sass', '~> 3.3.4.1'
+
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development

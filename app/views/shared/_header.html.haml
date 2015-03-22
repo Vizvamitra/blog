@@ -1,0 +1,23 @@
+%header
+  %nav.navbar.navbar-inverse
+    .container-fluid
+
+      .navbar-header
+        %button{type: "button", class: "navbar-toggle collapsed", "data-toggle" => "collapse", "data-target" => "#bs-example-navbar-collapse-1"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to 'Blog', root_path, class: "navbar-brand"
+
+      .collapse.navbar-collapse#bs-example-navbar-collapse-1
+
+        %ul.nav.navbar-nav
+          %li{class: (request.fullpath.match(/#{root_path}$/) ? 'active' : '')}
+            = link_to 'Записи', root_path
+          %li{class: (request.fullpath.match(archive_path) ? 'active' : '')}
+            = link_to 'Архив', archive_path
+
+        %ul.nav.navbar-nav.navbar-right
+          %li{class: (request.fullpath.match(new_user_session_path) ? 'active' : '')}
+            = link_to 'Войти', new_user_session_path
