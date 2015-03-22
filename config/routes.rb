@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'archive', to: 'archive#show', as: 'archive'
+
   namespace :current_user, path: 'users' do
     resources :articles, path: 'current/articles'
   end

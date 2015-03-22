@@ -11,6 +11,10 @@ RSpec.describe "routes", type: :routing do
     expect(get('/articles/feed')).to route_to('articles#feed', format: :rss)
   end
 
+  it 'archive' do
+    expect(get('/archive')).to route_to('archive#show')
+  end
+
   describe 'current_user' do
     it 'articles' do
       expect(get('/users/current/articles')).to\
