@@ -12,16 +12,26 @@ RSpec.describe ArticlesController, :type => :controller do
     end
 
     context 'tags not given' do
-      it "assigns @articles" do
-        get :index, page: '1'
-        expect(assigns(:articles)).to eq @articles[0..1]
+      before(:each){get :index, page: '1'}
+
+      it "assigns @articles" do        
+        expect(assigns(:articles)).to match_array @articles[0..1]
+      end
+
+      it 'orders articles by published_at' do
+        expect(assigns(:articles)).to be_ordered_by(:published_at)
       end
     end
 
     context 'tags given' do
+      before(:each){get :index, page: '1', tags: ['tea']}
+
       it "assigns @articles with given tag" do
-        get :index, page: '1', tags: ['tea']
         expect(assigns(:articles)).to eq @articles[0..0]
+      end
+
+      it 'orders articles by published_at' do
+        expect(assigns(:articles)).to be_ordered_by(:published_at)
       end
     end
   end
