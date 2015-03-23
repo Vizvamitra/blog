@@ -1,0 +1,14 @@
+.tags-widget
+  %form.form-inline{action: root_path}
+    .input-group
+      %input.form-control{type: 'text', name: "tags[]", placeholder: 'Поиск по тегам', value: query.try(:[], 0)}
+      %span.input-group-btn
+        %button.btn.btn-default.glyphicon.glyphicon-search{type: 'submit'}
+
+  %h4 Популярные:
+  %ul.list-group
+    %li.list-group-item= link_to 'Все', root_path
+    - tags.each do |tag|
+      %li.list-group-item
+        %span.badge= tag.count
+        = link_to "##{tag.name}", root_path(tags: [tag])

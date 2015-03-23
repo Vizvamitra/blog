@@ -1,0 +1,44 @@
+.tags-widget{
+  background-color: white;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  padding: 10px 15px 15px;
+  margin-bottom: 10px;
+
+  form{
+    .input-group-btn button{
+      margin-top: -2px;
+    }
+
+    input[type=text]{
+      box-shadow: 0 0 transparent;
+      transition: all 0.3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+
+      &:focus{
+        border: 1px solid white;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  > ul{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li{
+      padding: 0;
+
+      a{
+        display: block;
+        width: 100%;
+        padding: 5px 8px;
+      }
+      a:hover{background-color: #f8f8f8}
+
+      .badge{margin: 5px;}
+    }
+  }
+}

@@ -14,7 +14,14 @@ body{
 section#main{
   .pages{
     text-align: center;
-    font-size: 1.2em;
+    font-weight: bold;
+    font-size: 1.1em;
+    ul{ box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); }
+
+    a{ color: #333 }
+    a:hover{ color: #000 }
+    li.active a{color: white}
+    li a.glyphicon{ margin-top: -1px; }
   }
 }
 
