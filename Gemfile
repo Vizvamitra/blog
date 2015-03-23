@@ -16,6 +16,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'publishable', github: 'tvch1/publishable'
 gem 'mongoid-slug', '~> 4.0.0'
+gem 'rdiscount', '~> 2.1.8'
 
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'

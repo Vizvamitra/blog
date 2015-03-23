@@ -24,4 +24,9 @@ class Article
     ::RecalculateTagsJob.perform_later
   end
 
+  def html_preview
+    raw_text = body.sub(/\[more\].+/m, '')
+    RDiscount.new(raw_text).to_html
+  end
+
 end

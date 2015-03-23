@@ -8,6 +8,7 @@ RSpec.describe Article, :type => :model do
     it{ should validate_presence_of(:author) }
   end
 
+
   describe 'scopes' do
     describe 'recent' do
       it 'orders articles by published_at descending' do
@@ -41,6 +42,7 @@ RSpec.describe Article, :type => :model do
     end
   end
 
+
   describe 'callbacks' do
 
     describe 'after_save' do
@@ -59,6 +61,19 @@ RSpec.describe Article, :type => :model do
       end
     end
 
+  end
+
+
+  describe 'html_preview' do
+    let(:article){create(:article, body: "##test\n[more][/more]cutted\ncutted")}
+
+    it 'returns cutted body' do
+      expect(article.html_preview).not_to match(/(more|cutted)/)
+    end
+
+    it 'returns markdownized body' do
+      expect(article.html_preview).to eq RDiscount.new("##test\n").to_html
+    end
   end
 
 end
