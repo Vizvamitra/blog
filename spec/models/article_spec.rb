@@ -8,6 +8,7 @@ RSpec.describe Article, :type => :model do
     it{ should validate_presence_of(:author) }
   end
 
+
   describe 'scopes' do
     describe 'recent' do
       it 'orders articles by published_at descending' do
@@ -16,7 +17,31 @@ RSpec.describe Article, :type => :model do
         expect(Article.recent).to be_ordered_by(:published_at, :desc)
       end
     end
+
+    describe 'tagged' do
+      before(:each) do
+        @articles = [
+          create(:article, tags: ['tea']),
+          create(:article, tags: ['lol', 'tea']),
+          create(:article, tags: ['honey'])
+        ]
+      end
+
+      context 'array of tags given' do
+        it 'returns articles with given tags' do
+          expect(Article.tagged('tea')).to match_array @articles[0..1]
+          expect(Article.tagged(['lol', 'tea'])).to eq [@articles[1]]
+        end
+      end
+
+      context 'nil given' do
+        it 'returns all articles' do
+          expect(Article.tagged(nil)).to match_array @articles
+        end
+      end
+    end
   end
+
 
   describe 'callbacks' do
 
@@ -36,6 +61,19 @@ RSpec.describe Article, :type => :model do
       end
     end
 
+  end
+
+
+  describe 'html_preview' do
+    let(:article){create(:article, body: "##test\n[more][/more]cutted\ncutted")}
+
+    it 'returns cutted body' do
+      expect(article.html_preview).not_to match(/(more|cutted)/)
+    end
+
+    it 'returns markdownized body' do
+      expect(article.html_preview).to eq RDiscount.new("##test\n").to_html
+    end
   end
 
 end

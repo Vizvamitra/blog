@@ -18,9 +18,15 @@ class Article
   validates_presence_of :title, :body, :author
 
   scope :recent, ->{order(published_at: :desc)}
+  scope :tagged, ->(tags){ tags.nil? ? all : all_in(tags: tags) }
 
   after_save(if: :tags_changed?) do
     ::RecalculateTagsJob.perform_later
+  end
+
+  def html_preview
+    raw_text = body.sub(/\[more\].+/m, '')
+    RDiscount.new(raw_text).to_html
   end
 
 end
