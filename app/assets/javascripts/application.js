@@ -15,6 +15,4 @@
 //= require turbolinks
 //= require bootstrap
 
-//= require marked
-
 //= require blog
