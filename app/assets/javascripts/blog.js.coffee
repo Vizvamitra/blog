@@ -10,4 +10,4 @@ window.Blog = {
 }
 
 $ -> Blog.init_all()
-$(document).on 'page:load', Blog.init_all
+$(document).on 'page:load', -> Blog.init_all()

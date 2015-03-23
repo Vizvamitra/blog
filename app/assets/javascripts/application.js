@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 
+//= require highlight.pack
+
 //= require blog
+//= require syntax_highligher
