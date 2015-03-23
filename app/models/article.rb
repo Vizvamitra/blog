@@ -18,6 +18,7 @@ class Article
   validates_presence_of :title, :body, :author
 
   scope :recent, ->{order(published_at: :desc)}
+  scope :tagged, ->(tags){ tags.nil? ? all : all_in(tags: tags) }
 
   after_save(if: :tags_changed?) do
     ::RecalculateTagsJob.perform_later
