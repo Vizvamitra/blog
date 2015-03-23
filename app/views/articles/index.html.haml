@@ -1,0 +1,35 @@
+%section#widgets.col-md-3.col-md-push-9
+  .tags-widget
+    %form.form-inline{action: root_path}
+      .input-group
+        %input.form-control{name: "tags[]", placeholder: 'Поиск по тегам', value: params[:tags].try(:[], 0)}
+        %span.input-group-btn
+          %button.btn.btn-default.glyphicon.glyphicon-search{type: 'submit'}
+
+    %h4 Популярные:
+    %ul.list-group
+      - @tags = Tag.order(value: :desc).limit(10)
+      - @tags.each do |tag|
+        %li.list-group-item
+          %span.badge= tag.count
+          = link_to "##{tag.name}", root_path(tags: [tag])
+
+
+%section#articles.col-md-9.col-md-pull-3
+  %ul
+    - @articles.each do |a|
+      %li
+        %article
+          %header
+            %h1= link_to a.title, article_path(a.slug)
+          .body
+            %pre= a.body.sub(/\[more\].+/m, '')
+          %footer.row
+            .tags.col-md-8
+              - a.tags.each do |tag|
+                = link_to "##{tag}", root_path(tags: [tag])
+            .more.col-md-4
+              = link_to 'Читать далее...', article_path(a.slug)
+
+  .pages
+    = paginate @articles

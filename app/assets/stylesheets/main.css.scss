@@ -11,6 +11,17 @@ body{
   margin-bottom: 50px;
 }
 
+section#main{
+  .pages{
+    text-align: center;
+    font-size: 1.2em;
+  }
+}
+
+.footer-buffer{
+  height: 50px;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

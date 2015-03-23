@@ -14,6 +14,8 @@
     = render 'shared/header'
 
     .container
-      = yield
+      %section#main
+        = yield
 
+    .footer-buffer
     = render 'shared/footer'
