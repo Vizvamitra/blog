@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = index_collection.page(params[:page]).per(10)
+    @articles = index_collection.page(params[:page]).per(5)
+    @tags = Tag.order(value: :desc).limit(10)
+    @query = params[:tags]
   end
 
   def show

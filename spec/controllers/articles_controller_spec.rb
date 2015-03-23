@@ -11,27 +11,38 @@ RSpec.describe ArticlesController, :type => :controller do
       ]
     end
 
+    shared_examples 'index context-shared' do
+      it 'orders articles by published_at' do
+        expect(assigns(:articles)).to be_ordered_by(:published_at)
+      end
+
+      it "assigns @tags" do        
+        expect(assigns(:tags)).to eq Tag.order(value: :desc).limit(10)
+      end
+    end
+
+
     context 'tags not given' do
       before(:each){get :index, page: '1'}
 
+      include_examples 'index context-shared'
+
       it "assigns @articles" do        
         expect(assigns(:articles)).to match_array @articles[0..1]
-      end
-
-      it 'orders articles by published_at' do
-        expect(assigns(:articles)).to be_ordered_by(:published_at)
       end
     end
 
     context 'tags given' do
       before(:each){get :index, page: '1', tags: ['tea']}
 
-      it "assigns @articles with given tag" do
+      include_examples 'index context-shared'
+
+      it "assigns @articles with given tags" do
         expect(assigns(:articles)).to eq @articles[0..0]
       end
 
-      it 'orders articles by published_at' do
-        expect(assigns(:articles)).to be_ordered_by(:published_at)
+      it 'assigns @query' do
+        expect(assigns(:query)).to eq ['tea']
       end
     end
   end
