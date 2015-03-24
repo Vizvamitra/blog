@@ -9,19 +9,25 @@
 
 
   article{
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     padding: 5px 10px;
     background-color: white;
 
     header{
-      margin-bottom: 5px;
-      border-bottom: 1px solid gray;
+      margin-bottom: 15px;
+      border-bottom: 2px solid gray;
 
       h1{
         margin:0;
         font-size: 2em;
         a {color: #333;}
         a:hover {color: #000;}
+      }
+
+      .tags {
+        font-size: 1.2em;
+
+        a{ color: #777; }
+        a:hover{ color: #444; }
       }
     }
 
@@ -51,16 +57,12 @@
     }
 
     footer{
-      border-top: 1px solid gray;
+      margin-top: 15px;
+      border-top: 2px solid gray;
       padding-top: 3px;
       font-size: 1.2em;
 
-      .tags a{ color: #777; }
-      .tags a:hover{ color: #444; }
-
-      .more{
-        text-align: right;
-      }
+      .more{ text-align: right; }
     }
 
   }

@@ -1,0 +1,4 @@
+%section#archive.one-layer-up
+  %ul
+    - @articles.each do |article|
+      %li= link_to article.title, article_path(article)
