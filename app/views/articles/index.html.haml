@@ -1,7 +1,4 @@
-%section#widgets.col-md-3.col-md-push-9
-  = render 'widgets/tags', tags: @tags, query: @query
-
-%section#articles.col-md-9.col-md-pull-3
+#articles
   %ul
     - @articles.each do |a|
       %li

@@ -18,4 +18,6 @@
 //= require highlight.pack
 
 //= require blog
+
 //= require syntax_highligher
+//= require_directory ./widgets
