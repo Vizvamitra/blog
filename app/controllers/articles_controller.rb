@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
 
+  before_action :set_tags, only: [:index, :show]
+
   def index
     @query = params[:tags]
     @articles = Article.published.tagged(@query).recent.page(params[:page]).per(5)
-    @tags = Tag.order(value: :desc).limit(10)
   end
 
   def show

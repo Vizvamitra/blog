@@ -6,9 +6,14 @@ RSpec.describe ArchiveController, :type => :controller do
     let(:articles){create_list(:article, 10, :published)}
     let(:other_articles){create_list(:article, 10, :not_published)}
 
+    before(:each){ get :show }
+
     it "assigns @articles" do
-      get :show
       expect(assigns(:articles)).to match_array(articles)
+    end
+
+    it "assigns @tags" do        
+      expect(assigns(:tags)).to eq Tag.order(value: :desc).limit(10)
     end
   end
 
