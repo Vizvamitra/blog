@@ -50,9 +50,13 @@ RSpec.describe ArticlesController, :type => :controller do
 
   describe "GET show" do
     let(:article){ create(:article, :published) }
+    before(:each){ get :show, id: article.id }
+
+    it "assigns @tags" do        
+      expect(assigns(:tags)).to eq Tag.order(value: :desc).limit(10)
+    end
 
     it "assigns @article" do
-      get :show, id: article.id
       expect(assigns(:article)).to eq article
     end
   end
