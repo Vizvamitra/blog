@@ -1,13 +1,13 @@
 %section
   %article.one-layer-up
     %header
-      %h1= link_to @article.title, article_path(@article)
+      %h1= @article.title
       .tags
         - @article.tags.each do |tag|
           = link_to "##{tag}", root_path(tags: [tag])
     .body
       = preserve do
-        = raw @article.html_preview
+        = raw @article.body_html
     %footer
       .row
         .pubdate.col-xs-6.text-muted

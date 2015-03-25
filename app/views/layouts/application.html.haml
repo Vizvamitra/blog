@@ -15,11 +15,11 @@
 
     .container
       %section#main
-        %section#widgets.col-md-3.col-md-push-9
-          = render 'widgets/tags', tags: @tags, query: @query
-
-        %section#content.col-md-9.col-md-pull-3
+        %section#content.col-md-9
           = yield
+          
+        %section#widgets.col-md-3
+          = render 'widgets/tags', tags: @tags, query: @query
 
     .footer-buffer
     = render 'shared/footer'

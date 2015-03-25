@@ -10,7 +10,7 @@
                 = link_to "##{tag}", root_path(tags: [tag])
           .body
             = preserve do
-              = raw article.html_preview
+              = raw article.preview_html
           %footer
             .row
               .pubdate.col-xs-6.text-muted
