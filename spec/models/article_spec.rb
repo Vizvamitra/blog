@@ -64,15 +64,27 @@ RSpec.describe Article, :type => :model do
   end
 
 
-  describe 'html_preview' do
+  describe '#preview_html' do
     let(:article){create(:article, body: "##test\n[more][/more]cutted\ncutted")}
 
     it 'returns cutted body' do
-      expect(article.html_preview).not_to match(/(more|cutted)/)
+      expect(article.preview_html).not_to match(/(more|cutted)/)
     end
 
     it 'returns markdownized body' do
-      expect(article.html_preview).to eq RDiscount.new("##test\n").to_html
+      expect(article.preview_html).to eq RDiscount.new("##test\n").to_html
+    end
+  end
+
+  describe '#body_html' do
+    let(:article){create(:article, body: "##test\n[more][/more]cutted\ncutted")}
+
+    it 'returns body without [more] tag' do
+      expect(article.body_html).not_to match(/(more|[\[\]\\])/)
+    end
+
+    it 'returns markdownized body' do
+      expect(article.body_html).to eq RDiscount.new("##test\ncutted\ncutted").to_html
     end
   end
 
