@@ -1,0 +1,16 @@
+%section
+  %article.one-layer-up
+    %header
+      %h1= link_to @article.title, article_path(@article)
+      .tags
+        - @article.tags.each do |tag|
+          = link_to "##{tag}", root_path(tags: [tag])
+    .body
+      = preserve do
+        = raw @article.html_preview
+    %footer
+      .row
+        .pubdate.col-xs-6.text-muted
+          = @article.published_at.strftime("%Y.%m.%d, %H:%m")
+        .more.col-xs-6
+          = link_to 'Назад', articles_path

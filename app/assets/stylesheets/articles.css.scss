@@ -7,64 +7,62 @@
     li:first-of-type{ margin-top: 0; }
   }
 
+}
 
-  article{
-    padding: 5px 10px;
-    background-color: white;
+article{
+  padding: 5px 10px;
+  background-color: white;
 
-    header{
-      margin-bottom: 15px;
-      border-bottom: 2px solid gray;
+  header{
+    margin-bottom: 15px;
+    border-bottom: 2px solid gray;
 
-      h1{
-        margin:0;
-        font-size: 2em;
-        a {color: #333;}
-        a:hover {color: #000;}
-      }
-
-      .tags {
-        font-size: 1.2em;
-
-        a{ color: #777; }
-        a:hover{ color: #444; }
-      }
+    h1{
+      margin:0;
+      font-size: 2em;
+      a {color: #333;}
+      a:hover {color: #000;}
     }
 
-    .body{ 
-      font-size: 1.3em;
-
-      h1, h2, h3, h4, h5, h6{ font-weight: bold; }
-      h1, h2, h3, h5{color: #000; }
-      h6, h4{ color: #333; } 
-
-      h6{ font-style: italic; }
-      h5{ color: #333; }
-      h4{ font-size: 1.1em; }
-      h3{font-size: 1.2em}
-      h2{font-size: 1.3em}
-      h1{font-size: 1.4em}
-
-      blockquote{border-left: 5px solid #232323}
-
-      li{margin: 10px 0;}
-
-      pre{
-        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
-        background-color: rgb(230,220,200);
-      }
-      pre code{ font-size: 1.1em; }
-    }
-
-    footer{
-      margin-top: 15px;
-      border-top: 2px solid gray;
-      padding-top: 3px;
+    .tags {
       font-size: 1.2em;
 
-      .more{ text-align: right; }
+      a{ color: #777; }
+      a:hover{ color: #444; }
     }
-
   }
 
+  .body{ 
+    font-size: 1.3em;
+
+    h1, h2, h3, h4, h5, h6{ font-weight: bold; }
+    h1, h2, h3, h5{color: #000; }
+    h6, h4{ color: #333; } 
+
+    h6{ font-style: italic; }
+    h5{ color: #333; }
+    h4{ font-size: 1.1em; }
+    h3{font-size: 1.2em}
+    h2{font-size: 1.3em}
+    h1{font-size: 1.4em}
+
+    blockquote{border-left: 5px solid #232323}
+
+    li{margin: 10px 0;}
+
+    pre{
+      box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+      background-color: rgb(230,220,200);
+    }
+    pre code{ font-size: 1.1em; }
+  }
+
+  footer{
+    margin-top: 15px;
+    border-top: 2px solid gray;
+    padding-top: 3px;
+    font-size: 1.2em;
+
+    .more{ text-align: right; }
+  }
 }
