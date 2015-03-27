@@ -22,7 +22,7 @@ gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
 
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'unicorn'
+gem 'unicorn', '~> 4.8.3'
 # gem 'capistrano-rails', group: :development
 
 group :development do
@@ -32,6 +32,12 @@ group :development do
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'meta_request', '~> 0.3.4'
   gem 'progress_bar', '~> 1.0.3'
+
+  gem 'capistrano', '~>3.2.1'
+  gem 'capistrano-rails', '~> 1.1.2'
+  gem 'capistrano-bundler', '~> 1.1.3'
+  gem 'capistrano-rvm', '~> 0.1.2'
+  gem 'capistrano3-unicorn', '~> 0.2.1'
 end
 
 group :development, :test do
