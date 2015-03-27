@@ -5,7 +5,7 @@ class Article
   field :author, type: String
   field :title, type: String
   field :body, type: String
-  field :tags, type: Array
+  field :tags, type: Array, default: []
   field :published, type: Boolean
   field :published_at, type: DateTime
   field :expires_at, type: DateTime
