@@ -20,3 +20,14 @@
           - if current_user
             %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
               = link_to 'Мои посты', current_user_articles_path
+
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = link_to feed_articles_path do
+              %span.icon.rss
+          %li
+            = link_to 'https://plus.google.com/116744773779971246072/about' do
+              %span.icon.google-plus
+          %li
+            = link_to 'https://github.com/vizvamitra' do
+              %span.icon.github

@@ -12,6 +12,31 @@ body{
   background-color: #ddd;
   background: fixed image-url('background_2.jpg') left no-repeat;
 
+  > header{
+    .navbar-right{
+      a{
+        padding: 3px 5px;
+        height: 44px;
+
+        .icon{
+          display: inline-block;
+          width: 44px;
+          height: 44px;
+        }
+
+        .rss{ background-image: image-url('rss_gray.png') }
+        .google-plus{ background-image: image-url('google-plus_gray.png') }
+        .github{ background-image: image-url('github_gray.png') }
+
+        &:hover{
+          .rss{ background-image: image-url('rss_white.png') }
+          .google-plus{ background-image: image-url('google-plus_white.png') }
+          .github{ background-image: image-url('github_white.png') }
+        }
+      }
+    }
+  }
+
   > .container{
     padding-left: 0;
     padding-right: 0;
