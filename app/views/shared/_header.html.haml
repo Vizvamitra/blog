@@ -20,14 +20,3 @@
           - if current_user
             %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
               = link_to 'Мои посты', current_user_articles_path
-
-
-        - if current_user
-          %p.navbar-text.navbar-right
-            = "@#{current_user.name} ("
-            = link_to 'Выйти', destroy_user_session_path, method: :delete
-            )
-        - else
-          %ul.nav.navbar-nav.navbar-right
-            %li{class: (request.fullpath.match(new_user_session_path) ? 'active' : '')}
-              = link_to 'Войти', new_user_session_path

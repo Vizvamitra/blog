@@ -1,5 +1,13 @@
 %footer.footer
-  .container-fluid
-    %p
-      %span.text-muted Created by 
-      = link_to 'Vizvamitra', 'http://github.com/vizvamitra'
+  %nav.navbar-inverse
+    .container-fluid
+      %p.navbar-text
+        - if current_user
+          = "@#{current_user.name} ("
+          = link_to 'Выйти', destroy_user_session_path, method: :delete
+          )
+        - else
+          = link_to 'Войти', new_user_session_path, class: 'text-muted'
+      %p.navbar-text.navbar-right
+        %span.text-muted Created by 
+        = link_to 'Vizvamitra', 'http://github.com/vizvamitra'
