@@ -14,3 +14,7 @@
           = @article.published_at.strftime("%Y.%m.%d, %H:%m")
         .more.col-xs-6
           = link_to 'Назад', root_path
+
+%section.comments
+  #disqus_thread.one-layer-up
+    = disqus_comments(@article)
