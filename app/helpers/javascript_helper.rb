@@ -6,7 +6,7 @@ module JavascriptHelper
         /* * * CONFIGURATION VARIABLES * * */
         var disqus_shortname = 'vizvamitra';
         var disqus_identifier = 'article_#{article.id}';
-        var disqus_title = '#{article.title}';
+        var disqus_title = '#{article.title.gsub('\'', '\\\'')}';
         var disqus_url = '#{article_url(article)}';
         var disqus_config = function () { 
           this.language = "ru";
