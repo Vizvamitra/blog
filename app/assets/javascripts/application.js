@@ -20,4 +20,5 @@
 //= require blog
 
 //= require syntax_highligher
+//= require disqus_fix
 //= require_directory ./widgets
