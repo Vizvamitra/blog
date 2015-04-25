@@ -18,7 +18,7 @@
               .more.col-xs-6
                 = link_to 'Читать далее...', article_path(article.slug)
                 |
-                = link_to fa_icon('spinner pulse'), article_path(article.slug) + '#disqus_thread', class: 'comments-link fa fa-comments fa-lg'
+                = link_to fa_icon('spinner pulse'), article_path(article.slug) + '#disqus_thread', class: 'comments-link fa fa-comments'
 
   .pages
     = paginate @articles
