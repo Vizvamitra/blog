@@ -1,7 +1,15 @@
 %aside#articles-menu.one-layer-up
   %nav
     %ul
-      %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
-        = link_to 'Все записи', current_user_articles_path
-      %li= link_to 'Опубликованные', current_user_articles_path
-      %li= link_to 'Не опубликованные', current_user_articles_path
+
+      %li{active_if_path(current_user_articles_path)}
+        = link_to 'Все посты', current_user_articles_path
+
+      %li{active_if_path(current_user_articles_path(scope: 'published'))}
+        = link_to 'Опубликованные', current_user_articles_path(scope: 'published')
+
+      %li{active_if_path(current_user_articles_path(scope: 'not_published'))}
+        = link_to 'Не опубликованные', current_user_articles_path(scope: 'not_published')
+
+      %li{active_if_path(new_current_user_article_path)}
+        = link_to 'Новый', new_current_user_article_path

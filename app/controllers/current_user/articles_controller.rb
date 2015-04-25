@@ -4,10 +4,8 @@ class CurrentUser::ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-  layout 'current_user'
-
   def index
-    @articles = current_user.articles.recent.page(params[:page]).per(10)
+    @articles = scoped_collection.page(params[:page]).per(10)
   end
 
   def show
@@ -38,6 +36,12 @@ class CurrentUser::ArticlesController < ApplicationController
 
   private
 
+  def scoped_collection
+    scopes = ['all', 'published', 'not_published']
+    scope = scopes.include?(params[:scope]) ? params[:scope] : 'all'
+    current_user.articles.recent.send(scope)
+  end
+
   def article_params
     params.require(:article).permit(:title, :body, :tags, :published, :published_at, :expires_at)
   end
@@ -49,4 +53,5 @@ class CurrentUser::ArticlesController < ApplicationController
   def redirect_path
     current_user_article_path(@article) if @article.persisted?
   end
+
 end

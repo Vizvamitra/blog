@@ -3,13 +3,34 @@ require 'rails_helper'
 RSpec.describe CurrentUser::ArticlesController, :type => :controller do
 
   before(:each){ sign_in(@user = create(:user)) }
-  let(:articles){ create_list(:article, 5, author: @user) }
+  let!(:articles){ create_list(:article, 3, :published, author: @user) }
+  let!(:other_articles){ create_list(:article, 3, :not_published, author: @user) }
 
   describe "GET index" do
-    it "assigns @articles" do
-      get :index, page: '1'
-      expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
+
+    context 'no scope given' do
+      it "assigns @articles with all articles" do
+        get :index, page: '1'
+        expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
+      end
     end
+
+    context 'valid scope given' do
+      it "assigns @articles scoped to given scope" do
+        ['all', 'published', 'not_published'].each do |scope|
+          get :index, page: '1', scope: scope
+          expect(assigns(:articles)).to eq @user.articles.recent.send(scope).page(1).per(10).to_a
+        end
+      end
+    end
+
+    context 'invalid scope given' do
+      it "assigns @articles with all articles" do
+        get :index, page: '1', scope: 'hacking'
+        expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
+      end
+    end
+    
   end
 
 

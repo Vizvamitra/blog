@@ -15,10 +15,10 @@
         %ul.nav.navbar-nav
           %li{class: (request.fullpath.match(/#{root_path}$/) ? 'active' : '')}
             = link_to 'Записи', root_path
-          %li{class: (request.fullpath.match(archive_path) ? 'active' : '')}
+          %li{active_if_path(archive_path)}
             = link_to 'Архив', archive_path
           - if current_user
-            %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
+            %li{active_if_path(current_user_articles_path)}
               = link_to 'Мои посты', current_user_articles_path
 
         %ul.nav.navbar-nav.navbar-right
