@@ -17,9 +17,11 @@ gem 'kaminari'
 gem 'publishable', github: 'tvch1/publishable'
 gem 'mongoid-slug', '~> 4.0.0'
 gem 'rdiscount', '~> 2.1.8'
+gem 'russian'
 
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
+gem "font-awesome-rails"
 
 # gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn', '~> 4.8.3'

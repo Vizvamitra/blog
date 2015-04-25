@@ -1,7 +1,7 @@
 module JavascriptHelper
 
   def disqus_comments(article)
-    <<-JS.html_safe
+    <<-JS.html_safe if Rails.env == 'production'
       <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
         var disqus_shortname = 'vizvamitra';
@@ -27,7 +27,7 @@ module JavascriptHelper
   end
 
   def disqus_comment_counter
-    <<-JS.html_safe
+    <<-JS.html_safe if Rails.env == 'production'
       <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
         var disqus_shortname = 'vizvamitra';

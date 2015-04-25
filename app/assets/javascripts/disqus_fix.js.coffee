@@ -1,7 +1,9 @@
 DisqusFix = {
+  disqus_shortname: 'vizvamitra',
+
   init: ->
     window.DISQUSWIDGETS = undefined;
-    $.getScript("http://" + disqus_shortname + ".disqus.com/count.js");
+    $.getScript("http://" + this.disqus_shortname + ".disqus.com/count.js");
 }
 
 Blog.register(DisqusFix)

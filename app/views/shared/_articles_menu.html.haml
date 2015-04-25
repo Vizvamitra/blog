@@ -1,0 +1,7 @@
+%aside#articles-menu.one-layer-up
+  %nav
+    %ul
+      %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
+        = link_to 'Все записи', current_user_articles_path
+      %li= link_to 'Опубликованные', current_user_articles_path
+      %li= link_to 'Не опубликованные', current_user_articles_path

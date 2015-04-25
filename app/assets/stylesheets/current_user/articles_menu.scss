@@ -1,0 +1,24 @@
+#articles-menu{
+  margin-bottom: 15px;
+  background: $gray;
+
+  ul{
+    list-style: none;
+    padding: 0;
+
+    li{
+      
+      a{
+        color: white;
+        display: block;
+        padding: 10px 15px;
+        font-size: 1.1em;
+
+        &:hover{text-decoration: none;}
+      }
+
+      &.active a{ background: $gray-dark; }
+    }
+  }
+
+}

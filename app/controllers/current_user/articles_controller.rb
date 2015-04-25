@@ -4,8 +4,10 @@ class CurrentUser::ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+  layout 'current_user'
+
   def index
-    @articles = current_user.articles.page(params[:page]).per(10)
+    @articles = current_user.articles.recent.page(params[:page]).per(10)
   end
 
   def show

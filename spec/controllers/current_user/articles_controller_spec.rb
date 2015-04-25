@@ -8,7 +8,7 @@ RSpec.describe CurrentUser::ArticlesController, :type => :controller do
   describe "GET index" do
     it "assigns @articles" do
       get :index, page: '1'
-      expect(assigns(:articles)).to eq @user.articles.page(1).per(10).to_a
+      expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
     end
   end
 

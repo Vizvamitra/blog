@@ -1,0 +1,37 @@
+#my-articles{
+  ul{
+    list-style: none;
+    padding: 0;
+
+    li{
+      margin-top: 15px;
+      &:first-of-type{margin-top: 0;}
+
+      .article-item{
+        padding: 5px 15px;
+        background-color: white;
+
+        .info{
+          text-align: right;
+
+          .green{color: $brand-success}
+          .red{color: $brand-danger}
+        }
+
+        .body{ 
+          margin-top: 10px;
+
+          h4{
+            margin:0;
+            padding:0;
+          }
+
+          .controls{
+            text-align: right;
+            a{ color: $gray; }
+          }
+        }
+      }
+    }
+  }
+}
