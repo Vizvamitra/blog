@@ -64,5 +64,12 @@ article{
     font-size: 1.2em;
 
     .more{ text-align: right; }
+
+    .comments-link{
+      color: $gray;
+      text-decoration: none;
+      
+      &:hover{color: $gray-darker;}
+    }
   }
 }

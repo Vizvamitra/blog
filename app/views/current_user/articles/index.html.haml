@@ -11,7 +11,8 @@
               = fa_icon *(article.published? ? ['eye lg', class: 'green'] : ['eye-slash', class: 'red'])              
               |
               %span.fa.fa-comments.fa-lg.disqus-comment-count{ data: {"disqus-identifier" => "article_#{article.id}"} }
-              
+                = fa_icon('spinner pulse')
+
           .body.row
             .col-xs-9
               %h4= link_to article.title, current_user_article_path(article)
