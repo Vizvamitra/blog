@@ -1,7 +1,10 @@
 %section
   %article.one-layer-up
     %header
+      .edit-link
+        = link_to fa_icon('pencil lg'), edit_current_user_article_path(@article), class: 'pull-right'
       %h1= @article.title
+
       .tags
         - @article.tags.each do |tag|
           = link_to "##{tag}", root_path(tags: [tag])

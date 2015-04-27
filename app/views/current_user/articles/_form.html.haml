@@ -1,0 +1,26 @@
+#article-form.one-layer-up
+  = form_for @article, url: (@article.new_record? ? current_user_articles_path : [:current_user, @article]), metod: :post do |f|
+    .form-group{class: @article.errors[:title].present? ? 'has-error' : ''}
+      = f.text_field :title, placeholder: Article.human_attribute_name(:title), class: 'form-control'
+
+    .form-group{class: @article.errors[:body].present? ? 'has-error' : ''}
+      = f.text_area :body, rows: 20, class: 'form-control'
+
+    .form-group
+      = f.label :tags
+      #tag-box{data: {'tags-input-name' => 'article[tags]'}}= @article.tags.join(', ')
+
+    .form-group{class: @article.errors[:published].present? ? 'has-error' : ''}
+      .checkbox
+        = f.label :published do
+          = f.check_box :published
+          = Article.human_attribute_name :published
+
+    .row
+      .form-group.col-xs-6{class: @article.errors[:published_at].present? ? 'has-error' : ''}
+        = f.text_field :published_at, value: (@article.published_at.present? ? l(@article.published_at, format: '%d.%m.%Y %H:%M') : nil), placeholder: Article.human_attribute_name(:published_at), class: 'form-control datetimepicker'
+      .form-group.col-xs-6{class: @article.errors[:expires_at].present? ? 'has-error' : ''}
+        = f.text_field :expires_at, value: (@article.expires_at.present? ? l(@article.expires_at, format: '%d.%m.%Y %H:%M') : nil), placeholder: Article.human_attribute_name(:expires_at), class: 'form-control datetimepicker'
+
+    .form-group
+      = f.submit class: 'btn btn-primary'

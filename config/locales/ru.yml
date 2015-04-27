@@ -1,0 +1,18 @@
+ru:
+  mongoid:
+    models:
+      article:
+        zero: 'постов'
+        one: 'пост'
+        few: 'поста'
+        many: 'постов'
+        other: 'посты'
+
+    attributes:
+      article:
+        title: 'Название'
+        body: 'Содержимое'
+        tags: 'Тэги'
+        published: 'Опубликован'
+        published_at: 'Дата публикации'
+        expires_at: 'Опубликован до'

@@ -16,6 +16,7 @@
               .col-xs-6
                 %span= l(article.created_at, format: '%d.%m.%Y %H:%M')
               .col-xs-6.info
+                = l(article.published_at, format: '%d.%m.%Y %H:%M') if article.published?
                 = fa_icon *(article.published? ? ['eye lg', class: 'green'] : ['eye-slash', class: 'red'])              
                 |
                 %span.fa.fa-comments.fa-lg.disqus-comment-count{ data: {"disqus-identifier" => "article_#{article.id}"} }
