@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/tvch1/publishable.git
-  revision: ce58ee71acd077c0145c13841e2b6d939a138444
+  revision: 25eef8407efadeb47992d7046d169c9b235706d9
   specs:
     publishable (0.1.0)
       rails (>= 4.1.0)
@@ -113,12 +113,11 @@ GEM
       railties (>= 3.0.0)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
-    globalid (0.3.3)
+    globalid (0.3.5)
       activesupport (>= 4.1.0)
     haml (4.0.6)
       tilt
     highline (1.6.21)
-    hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.11)
       activesupport (>= 3.0.0, < 5)
@@ -145,9 +144,9 @@ GEM
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
     method_source (0.8.2)
-    mime-types (2.4.3)
+    mime-types (2.5)
     mini_portile (0.6.2)
-    minitest (5.5.1)
+    minitest (5.6.0)
     mongoid (4.0.2)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
@@ -205,7 +204,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.5)
+    rails-dom-testing (1.0.6)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -246,7 +245,7 @@ GEM
     russian (0.6.0)
       i18n (>= 0.5.0)
     sass (3.4.13)
-    sass-rails (5.0.1)
+    sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -262,11 +261,8 @@ GEM
     simplecov-html (0.9.0)
     slop (3.6.0)
     spring (1.3.3)
-    sprockets (2.12.3)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
+    sprockets (3.0.2)
       rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -339,7 +335,7 @@ DEPENDENCIES
   rdiscount (~> 2.1.8)
   rspec-rails (~> 3.1.0)
   russian
-  sass-rails (~> 5.0)
+  sass-rails (~> 5.0.2)
   sdoc (~> 0.4.0)
   simplecov (~> 0.9.1)
   spring
