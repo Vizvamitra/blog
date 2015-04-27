@@ -3,6 +3,9 @@
   background: white;
 
   form{
-    textarea{ resize: none; }
+    textarea{
+      resize: none;
+      font-family: Courier, "Courier New", monospace;
+    }
   }
 }
