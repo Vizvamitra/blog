@@ -20,7 +20,7 @@ class Article
   scope :recent, ->{order(published_at: :desc)}
   scope :tagged, ->(tags){ tags.nil? ? all : all_in(tags: tags) }
 
-  after_save(if: :tags_changed?) do
+  after_save do
     ::RecalculateTagsJob.perform_later
   end
 
