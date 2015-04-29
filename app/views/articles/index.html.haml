@@ -14,7 +14,7 @@
           %footer
             .row
               .pubdate.col-xs-6.text-muted
-                = article.published_at.strftime("%Y.%m.%d, %H:%m")
+                = article.published_at.strftime("%Y.%m.%d, %H:%M")
               .more.col-xs-6
                 = link_to 'Читать далее...', article_path(article.slug)
                 |
