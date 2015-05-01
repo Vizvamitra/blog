@@ -3,7 +3,8 @@ Tags = {
     'no-duplicate': true,
     'tag-box-class': 'tagging form-control',
     'no-spacebar': true,
-    'edit-on-delete': false
+    'edit-on-delete': false,
+    'forbidden-chars': [",", "?"]
   },
 
   init: ->

@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
         description: :description,
         type: 'article',
         url: article_url(@article),
-        image: "#{root_url}/og_image.png",
+        image: "#{root_url}og_image.png",
         site_name: 'Vizvamitra\'s blog',
         locale: 'ru_RU',
         published_time: @article.published_at.try(:iso8601),
