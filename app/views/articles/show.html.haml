@@ -1,17 +1,18 @@
 %section
-  %article.one-layer-up
+  %article.one-layer-up{itemscope: true, itemtype: 'http://schema.org/BlogPosting'}
     %header
-      %h1= @article.title
+      %h1{itemprop: 'headline'}= title @article.title
       .tags
         - @article.tags.each do |tag|
-          = link_to "##{tag}", root_path(tags: [tag])
-    .body
+          = link_to "##{keyword_tag(tag)}".html_safe, root_path(tags: [tag])
+    .body{itemprop: "description articleBody"}
       = preserve do
         = raw @article.body_html
     %footer
       .row
         .pubdate.col-xs-6.text-muted
-          = @article.published_at.strftime("%Y.%m.%d, %H:%m")
+          %time{itemprop: 'datePublished', datetime: @article.published_at.iso8601}
+            = @article.published_at.strftime("%Y.%m.%d, %H:%m")
         .more.col-xs-6
           = link_to 'Назад', root_path
 

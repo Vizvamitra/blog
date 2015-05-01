@@ -1,20 +1,24 @@
 #articles
+  %div{itemscope: "itemscope", itemtype: "http://schema.org/Blog", style: "display: none;"}
+    %meta{content: "Vizvamitra's blog", itemprop: "name"}
+    
   %ul
     - @articles.each do |article|
       %li
-        %article.one-layer-up
+        %article.one-layer-up{itemscope: true, itemtype: 'http://schema.org/BlogPosting', itemprop: 'blogPost'}
           %header
-            %h1= link_to article.title, article_path(article)
+            %h1{itemprop: 'headline'}= link_to article.title, article_path(article)
             .tags
               - article.tags.each do |tag|
-                = link_to "##{tag}", root_path(tags: [tag])
+                = link_to "##{keyword_tag(tag)}".html_safe, root_path(tags: [tag])
           .body
             = preserve do
               = raw article.preview_html
           %footer
             .row
               .pubdate.col-xs-6.text-muted
-                = article.published_at.strftime("%Y.%m.%d, %H:%M")
+                %time{itemprop: 'datePublished', datetime: article.published_at.iso8601}
+                  = article.published_at.strftime("%Y.%m.%d, %H:%M")
               .more.col-xs-6
                 = link_to 'Читать далее...', article_path(article.slug)
                 |

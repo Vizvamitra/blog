@@ -13,3 +13,5 @@
 
       %li{active_if_path(new_current_user_article_path)}
         = link_to 'Новый', new_current_user_article_path
+
+      = yield :articles_menu

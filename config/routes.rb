@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, skip: [:registrations]
+  devise_for :users, skip: [:registrations], controllers: {sessions: 'sessions'}
 
   root 'articles#index'
 
