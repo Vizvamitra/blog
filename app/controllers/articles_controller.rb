@@ -26,7 +26,13 @@ class ArticlesController < ApplicationController
     {
       title: 'Записи',
       next: (@articles.last_page? ? '' : articles_path(tags: params[:tags], page: @articles.next_page)),
-      prev: (@articles.first_page? ? '' : articles_path(tags: params[:tags], page: @articles.prev_page))
+      prev: (@articles.first_page? ? '' : articles_path(tags: params[:tags], page: @articles.prev_page)),
+      og: {
+        title: 'Vizvamitra\'s blog',
+        description: 'О веб-технологиях, учёбе и всём техническом, что придёт мне на ум',
+        url: root_url,
+        type: 'website',
+      }
     }
   end
 
@@ -38,16 +44,17 @@ class ArticlesController < ApplicationController
       og: {
         title: @article.title,
         description: :description,
-        type: 'article',
         url: article_url(@article),
-        image: "#{root_url}og_image.png",
-        site_name: 'Vizvamitra\'s blog',
+        type: 'article',
         locale: 'ru_RU',
+        site_name: 'Vizvamitra\'s blog'
+      },
+      article: {
         published_time: @article.published_at.try(:iso8601),
         modified_time: @article.updated_at.try(:iso8601),
         expiration_time: @article.expires_at.try(:iso8601),
         author: @article.author.name,
-        tag: @article.tags,
+        tag: @article.tags
       }
     }
   end

@@ -13,7 +13,13 @@ class ApplicationController < ActionController::Base
   def set_blog_info
     set_meta_tags(
       site: 'Vizvamitra\'s blog',
-      author: 'https://plus.google.com/116744773779971246072/'
+      author: 'https://plus.google.com/116744773779971246072/',
+      og: {
+        image: "#{root_url}og_image.jpg",
+        'image:type' => 'image/jpg',
+        'image:width' => 200,
+        'image:height' => 200
+      }
     )
   end
 end
