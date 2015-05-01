@@ -1,11 +1,12 @@
 %section
   %article.one-layer-up{itemscope: true, itemtype: 'http://schema.org/BlogPosting'}
     %header
+      %meta{content: @article.description || @article.title, itemprop: "description"}
       %h1{itemprop: 'headline'}= title @article.title
       .tags
         - @article.tags.each do |tag|
           = link_to "##{keyword_tag(tag)}".html_safe, root_path(tags: [tag])
-    .body{itemprop: "description articleBody"}
+    .body{itemprop: "articleBody"}
       = preserve do
         = raw @article.body_html
     %footer

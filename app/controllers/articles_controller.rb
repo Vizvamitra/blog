@@ -33,10 +33,11 @@ class ArticlesController < ApplicationController
   def meta_tags_for_show
     {
       title: @article.title,
+      description: @article.description || @article.title,
       keywords: @article.tags,
       og: {
-        title: @article.title,
-        description: @article.title,
+        title: :title,
+        description: :description,
         type: 'article',
         url: article_url(@article),
         image: "#{root_url}/og_image.png",

@@ -62,7 +62,7 @@ class CurrentUser::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :published, :published_at, :expires_at, tags: [])
+    params.require(:article).permit(:title, :body, :description, :published, :published_at, :expires_at, tags: [])
   end
 
   def set_article

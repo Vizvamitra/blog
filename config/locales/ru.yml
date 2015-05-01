@@ -12,6 +12,7 @@ ru:
       article:
         title: 'Название'
         body: 'Содержимое'
+        description: 'Описание'
         tags: 'Тэги'
         published: 'Опубликован'
         published_at: 'Дата публикации'

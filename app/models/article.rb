@@ -4,6 +4,7 @@ class Article
   include Mongoid::Slug
   field :author, type: String
   field :title, type: String
+  field :description, type: String
   field :body, type: String
   field :tags, type: Array, default: []
   field :published, type: Boolean

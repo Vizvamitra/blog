@@ -10,6 +10,9 @@
       = f.label :tags
       #tag-box{data: {'tags-input-name' => 'article[tags]'}}= @article.tags.join(', ')
 
+    .form-group
+      = f.text_area :description, placeholder: Article.human_attribute_name(:description), rows: 3, class: 'form-control'
+
     .form-group{class: @article.errors[:published].present? ? 'has-error' : ''}
       .checkbox
         = f.label :published do
