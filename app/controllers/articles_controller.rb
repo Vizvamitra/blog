@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
       description: @article.description || @article.title,
       keywords: @article.tags,
       og: {
-        title: :title,
+        title: @article.title,
         description: :description,
         type: 'article',
         url: article_url(@article),
