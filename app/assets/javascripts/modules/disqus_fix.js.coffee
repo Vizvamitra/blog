@@ -2,7 +2,7 @@ DisqusFix = {
   disqusShortname: 'vizvamitra',
 
   init: ->
-    delete window.DISQUSWIDGETS
+    window.DISQUSWIDGETS = undefined
     $.getScript "http://#{@disqusShortname}.disqus.com/count.js"
 }
 
