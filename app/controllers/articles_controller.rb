@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
   def meta_tags_for_index
     {
-      title: 'Лента',
+      title: 'Записи',
       next: (@articles.last_page? ? '' : articles_path(tags: params[:tags], page: @articles.next_page)),
       prev: (@articles.first_page? ? '' : articles_path(tags: params[:tags], page: @articles.prev_page))
     }
