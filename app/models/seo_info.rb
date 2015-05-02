@@ -19,8 +19,8 @@ class SeoInfo
   def for_article_index collection, params
     {
       title: 'Записи',
-      next: (collection.last_page? ? '' : articles_url(tags: params[:tags], page: collection.next_page)),
-      prev: (collection.first_page? ? '' : articles_url(tags: params[:tags], page: collection.prev_page)),
+      next: (collection.last_page? ? '' : root_url(tags: params[:tags], page: collection.next_page)),
+      prev: (collection.first_page? ? '' : root_url(tags: params[:tags], page: collection.prev_page)),
       og: {
         title: SITE_NAME,
         description: 'О веб-технологиях, учёбе и всём техническом, что придёт мне на ум',
