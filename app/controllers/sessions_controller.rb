@@ -1,7 +1,7 @@
 class SessionsController < Devise::SessionsController
 
   def new
-    set_meta_tags title: 'Вход'
+    set_meta_tags SeoInfo.new.for_login_page
     super
   end
 
