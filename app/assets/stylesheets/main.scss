@@ -22,16 +22,18 @@ body{
           display: inline-block;
           width: 44px;
           height: 44px;
+          background-image: image-url('social_icons.png');
+          background-repeat: no-repeat;
         }
 
-        .rss{ background-image: image-url('rss_gray.png') }
-        .google-plus{ background-image: image-url('google-plus_gray.png') }
-        .github{ background-image: image-url('github_gray.png') }
+        .rss{ background-position: -88px 0; }
+        .google-plus{ background-position: 0 -44px; }
+        .github{ background-position: 0 0; }
 
         &:hover{
-          .rss{ background-image: image-url('rss_white.png') }
-          .google-plus{ background-image: image-url('google-plus_white.png') }
-          .github{ background-image: image-url('github_white.png') }
+          .rss{ background-position: -88px -44px; }
+          .google-plus{ background-position: -44px -44px; }
+          .github{ background-position: -44px 0; }
         }
       }
     }
