@@ -7,23 +7,23 @@ class CurrentUser::ArticlesController < ApplicationController
   # GET /users/current/articles
   def index
     @articles = scoped_collection.page(params[:page]).per(10)
-    set_meta_tags title: index_page_title
+    set_meta_tags SeoInfo.new.for_current_user_articles_index(params[:scope])
   end
 
   # GET /users/current/articles/:id
   def show
-    set_meta_tags title: @article.title
+    set_meta_tags SeoInfo.new.for_current_user_article(@article)
   end
 
   # GET /users/current/articles/new
   def new
     @article = Article.new
-    set_meta_tags title: 'Новый пост'
+    set_meta_tags SeoInfo.new.for_new_article
   end
 
   # GET /users/current/articles/:id/edit
   def edit
-    set_meta_tags title: @article.title
+    set_meta_tags SeoInfo.new.for_article_edit(@article)
   end
 
   # POST /users/current/articles
@@ -46,14 +46,6 @@ class CurrentUser::ArticlesController < ApplicationController
   end
 
   private
-
-  def index_page_title
-    case params[:scope]
-    when 'published' then 'Опубликованные'
-    when 'not_published' then 'Не опубликованные'
-    else 'Все посты'
-    end
-  end
 
   def scoped_collection
     scopes = ['all', 'published', 'not_published']

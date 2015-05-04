@@ -57,4 +57,21 @@ class SeoInfo
     { title: 'Вход' }
   end
 
+  def for_current_user_articles_index scope
+    mappings = {'published' => 'Опубликованные', 'not_published' => 'Не опубликованные'}
+    { title: mappings[scope] || 'Все посты' }
+  end
+
+  def for_current_user_article article
+    { title: article.title }
+  end
+
+  def for_new_article
+    { title: 'Новый' }
+  end
+
+  def for_article_edit article
+    { title: article.title }
+  end
+
 end
