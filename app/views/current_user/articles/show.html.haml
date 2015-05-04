@@ -14,8 +14,8 @@
         - @article.tags.each do |tag|
           = link_to "##{tag}", root_path(tags: [tag])
     .body
-      = preserve do
-        = raw @article.body_html
+      - @article.snippets.each do |snippet|
+        = render partial: snippet.to_partial_path, object: snippet, as: 'snippet'
     %footer
       .row
         .pubdate.col-xs-6.text-muted

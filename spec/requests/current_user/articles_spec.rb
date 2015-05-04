@@ -96,13 +96,12 @@ RSpec.describe 'CurrentUser/Articles' do
       let(:request){ ->{post current_user_articles_path, article: params} }
 
       context 'when article params are valid' do
-        let(:params){attributes_for(:article).except(:author)}
-        let(:article){ Article.last }
+        let(:params){attributes_for(:article).except(:author, :snippets).merge(snippets_attributes: [{_type: 'Snippets::Text', body: 'test'}])}
 
-        it{ should redirect_to(current_user_article_path(article)) }
+        it{ should redirect_to(current_user_article_path(Article.last)) }
 
         it 'creates a new article' do
-          params.each{ |k,v| expect(article[k]).to eq v }
+          params.except(:snippets_attributes).each{ |k,v| expect(Article.last[k]).to eq v }
         end
       end
 

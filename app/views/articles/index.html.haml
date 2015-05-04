@@ -13,8 +13,7 @@
               - article.tags.each do |tag|
                 = link_to "##{keyword_tag(tag)}".html_safe, root_path(tags: [tag])
           .body
-            = preserve do
-              = raw article.preview_html
+            = render partial: article.snippets.first, as: 'snippet'
           %footer
             .row
               .pubdate.col-xs-6.text-muted

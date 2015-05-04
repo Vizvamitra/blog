@@ -1,0 +1,3 @@
+.snippet{style: 'margin-top: 10px;'}
+  = preserve do
+    = raw RDiscount.new(snippet.body).to_html

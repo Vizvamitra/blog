@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :article do
     sequence(:title){|n| "Title #{n}"}
-    sequence(:body){|n| "## Post #{n}"}
+    snippets { [build(:text_snippet)] }
     author { create(:user).id }
 
     trait(:published){ published true; published_at DateTime.yesterday }
@@ -26,6 +26,14 @@ FactoryGirl.define do
   factory :tag do
     sequence(:_id){|n| "tag_#{n}"}
     value { rand(1..10) }
+  end
+
+  factory :text_snippet, class: 'Snippets::Text' do
+    sequence(:body){ |n| "## Post #{n}" }
+  end
+
+  factory :embed_snippet, class: 'Snippets::Embed' do
+    body { "<iframe src='#'></iframe>" }
   end
 
 end

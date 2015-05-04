@@ -53,9 +53,9 @@ RSpec.describe CurrentUser::ArticlesController, :type => :controller do
 
   describe "POST create" do
     it "assigns @article" do
-      attrs = attributes_for(:article).except(:author)
+      attrs = attributes_for(:article).except(:author, :snippets).merge!(snippets_attributes: [{_type: 'Snippets::Text'}.merge(attributes_for(:text_snippet))])
       post :create, article: attrs
-      attrs.each{|k,v| expect(assigns(:article)[k]).to eq v }
+      expect(assigns(:article)).to eq Article.last
     end
   end
 
