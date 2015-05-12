@@ -9,5 +9,5 @@ Blog.define 'Tags', ->
 
   return {
     init: ->
-      $('#tag-box').tagging(@options)
+      $('#tag-box').tagging(options)
   }
