@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require fluidvids.min
 
 //= require highlight.pack
 
@@ -21,4 +22,5 @@
 
 //= require ./modules/disqus_fix
 //= require ./modules/syntax_highlighter
+//= require ./modules/fluid_vids
 //= require_directory ./widgets
