@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CurrentUser::ArticlesController, :type => :controller do
+RSpec.describe Admin::ArticlesController, :type => :controller do
 
   before(:each){ sign_in(@user = create(:user)) }
   let!(:articles){ create_list(:article, 3, :published, author: @user) }

@@ -2,12 +2,12 @@
 
   = content_for :articles_menu do
     %li.active
-      = link_to @article.title, edit_current_user_article_path(@article)
+      = link_to @article.title, edit_admin_article_path(@article)
 
   %article.one-layer-up
     %header
       .edit-link
-        = link_to fa_icon('pencil lg'), edit_current_user_article_path(@article), class: 'pull-right'
+        = link_to fa_icon('pencil lg'), edit_admin_article_path(@article), class: 'pull-right'
       %h1= @article.title
 
       .tags
@@ -21,4 +21,4 @@
         .pubdate.col-xs-6.text-muted
           = @article.published_at.try(:strftime, "%Y.%m.%d, %H:%m")
         .more.col-xs-6
-          = link_to 'Назад', current_user_articles_path
+          = link_to 'Назад', admin_articles_path

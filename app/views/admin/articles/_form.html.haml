@@ -1,5 +1,5 @@
 #article-form.one-layer-up
-  = form_for @article, url: (@article.new_record? ? current_user_articles_path : [:current_user, @article]), metod: :post do |f|
+  = form_for @article, url: (@article.new_record? ? admin_articles_path : [:admin, @article]), metod: :post do |f|
     .form-group{class: @article.errors[:title].present? ? 'has-error' : ''}
       = f.text_field :title, placeholder: Article.human_attribute_name(:title), class: 'form-control'
 

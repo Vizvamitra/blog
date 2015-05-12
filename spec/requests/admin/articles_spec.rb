@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'CurrentUser/Articles' do
+RSpec.describe 'Admin/Articles' do
   
   shared_examples 'redirects to login page' do
     it{ should have_http_status(302) }
@@ -13,37 +13,37 @@ RSpec.describe 'CurrentUser/Articles' do
     before(:each){ request.call }
 
     describe 'GET index' do
-      let(:request){ ->{get current_user_articles_path} }
+      let(:request){ ->{get admin_articles_path} }
       it_behaves_like 'redirects to login page'
     end
 
     describe 'GET show' do
-      let(:request){ ->{get current_user_article_path(create(:article))} }
+      let(:request){ ->{get admin_article_path(create(:article))} }
       it_behaves_like 'redirects to login page'
     end
 
      describe 'GET /users/current/articles/new' do
-      let(:request){ ->{get new_current_user_article_path} }
+      let(:request){ ->{get new_admin_article_path} }
       it_behaves_like 'redirects to login page'
     end
 
     describe 'GET /users/current/articles/:id/edit' do
-      let(:request){ ->{get edit_current_user_article_path(create(:article))} }
+      let(:request){ ->{get edit_admin_article_path(create(:article))} }
       it_behaves_like 'redirects to login page'
     end
 
     describe 'POST /users/current/articles' do
-      let(:request){ ->{post current_user_articles_path} }
+      let(:request){ ->{post admin_articles_path} }
       it_behaves_like 'redirects to login page'
     end
 
     describe 'PATCH /users/current/articles/:id' do
-      let(:request){ ->{patch current_user_article_path(create(:article))} }
+      let(:request){ ->{patch admin_article_path(create(:article))} }
       it_behaves_like 'redirects to login page'
     end
 
     describe 'DELETE /users/current/articles/:id' do
-      let(:request){ ->{delete current_user_article_path(create(:article))} }
+      let(:request){ ->{delete admin_article_path(create(:article))} }
       it_behaves_like 'redirects to login page'
     end
   end
@@ -59,7 +59,7 @@ RSpec.describe 'CurrentUser/Articles' do
 
     
     describe 'GET /users/current/articles' do
-      let(:request){ ->{get current_user_articles_path} }
+      let(:request){ ->{get admin_articles_path} }
 
       it{ should have_http_status(:success) }
       it{ should render_template(:index) }
@@ -67,13 +67,13 @@ RSpec.describe 'CurrentUser/Articles' do
 
 
     describe 'GET /users/current/articles/:id' do
-      let(:request){ ->{ get current_user_article_path(id)} }
+      let(:request){ ->{ get admin_article_path(id)} }
       
       context 'when article existsd' do
         let(:id){ create(:article, author: @user).id }
 
         it { should have_http_status(:success) }
-        it { should render_template('current_user/articles/show') }
+        it { should render_template('admin/articles/show') }
       end
 
       context 'when article doesn\'t exist' do
@@ -85,20 +85,20 @@ RSpec.describe 'CurrentUser/Articles' do
 
 
     describe 'GET /users/current/articles/new' do
-      let(:request){ ->{ get new_current_user_article_path} }
+      let(:request){ ->{ get new_admin_article_path} }
 
       it{ should have_http_status(:success) }
-      it{ should render_template('current_user/articles/new') }
+      it{ should render_template('admin/articles/new') }
     end
 
 
     describe 'POST /users/current/articles' do
-      let(:request){ ->{post current_user_articles_path, article: params} }
+      let(:request){ ->{post admin_articles_path, article: params} }
 
       context 'when article params are valid' do
         let(:params){attributes_for(:article).except(:author, :snippets).merge(snippets_attributes: [{_type: 'Snippets::Text', body: 'test'}])}
 
-        it{ should redirect_to(current_user_article_path(Article.last)) }
+        it{ should redirect_to(admin_article_path(Article.last)) }
 
         it 'creates a new article' do
           params.except(:snippets_attributes).each{ |k,v| expect(Article.last[k]).to eq v }
@@ -108,19 +108,19 @@ RSpec.describe 'CurrentUser/Articles' do
       context 'when article params are invalid' do
         let(:params){ attributes_for(:invalid_article) }
 
-        it{ should render_template('current_user/articles/new') }
+        it{ should render_template('admin/articles/new') }
       end
     end
 
 
     describe 'GET /users/current/articles/:id/edit' do
-      let(:request){ ->{ get edit_current_user_article_path(id)} }
+      let(:request){ ->{ get edit_admin_article_path(id)} }
 
       context 'when article exists' do
         let(:id){ create(:article, author: @user).id }
 
         it{ should have_http_status(:success) }
-        it{ should render_template('current_user/articles/edit') }
+        it{ should render_template('admin/articles/edit') }
       end
 
       context 'when article doesn\'t exist' do
@@ -132,13 +132,13 @@ RSpec.describe 'CurrentUser/Articles' do
 
 
     describe 'PATCH /users/current/articles/:id' do
-      let(:request){ ->{patch current_user_article_path(article.id), article: params} }
+      let(:request){ ->{patch admin_article_path(article.id), article: params} }
       
       context 'when article params are valid' do
         let(:article){ create(:article, author: @user) }
         let(:params){ {title: 'test', body: '123'} }
 
-        it{ should redirect_to(current_user_article_path(article.reload)) }
+        it{ should redirect_to(admin_article_path(article.reload)) }
 
         it 'updates article' do
           article.reload
@@ -184,7 +184,7 @@ RSpec.describe 'CurrentUser/Articles' do
         let(:article){ create(:article, author: @user) }
         let(:params){ {title: nil}}
 
-        it{ should render_template('current_user/articles/edit') }
+        it{ should render_template('admin/articles/edit') }
       end
 
       context 'when article doesn\'t exist' do
@@ -197,12 +197,12 @@ RSpec.describe 'CurrentUser/Articles' do
 
 
     describe 'DELETE /users/current/articles/:id' do
-      let(:request){ ->{delete current_user_article_path(article.id)} }
+      let(:request){ ->{delete admin_article_path(article.id)} }
 
       context 'if article exists' do
         let(:article){ create(:article, author: @user) }
 
-        it{ should redirect_to(current_user_articles_path) }
+        it{ should redirect_to(admin_articles_path) }
         it('destroys article'){ expect(Article.where(id: article.id)).to be_empty }
       end
 

@@ -20,7 +20,5 @@
 
 //= require blog
 
-//= require ./modules/disqus_fix
-//= require ./modules/syntax_highlighter
-//= require ./modules/fluid_vids
+//= require_directory ./modules
 //= require_directory ./widgets
