@@ -1,8 +1,7 @@
-DatetimePicker = {
-  init: ->
-    $('.datetimepicker').datetimepicker
-      lang: 'ru'
-      format:'d.m.Y H:i'
-}
-
-Blog.register(DatetimePicker)
+Blog.define 'DatetimePicker', ->
+  return {
+    init: ->
+      $('.datetimepicker').datetimepicker
+        lang: 'ru'
+        format:'d.m.Y H:i'
+  }
