@@ -11,7 +11,7 @@ RSpec.describe Admin::ArticlesController, :type => :controller do
     context 'no scope given' do
       it "assigns @articles with all articles" do
         get :index, page: '1'
-        expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
+        expect(assigns(:articles)).to eq @user.articles.order(created_at: :desc).page(1).per(10).to_a
       end
     end
 
@@ -19,7 +19,7 @@ RSpec.describe Admin::ArticlesController, :type => :controller do
       it "assigns @articles scoped to given scope" do
         ['all', 'published', 'not_published'].each do |scope|
           get :index, page: '1', scope: scope
-          expect(assigns(:articles)).to eq @user.articles.recent.send(scope).page(1).per(10).to_a
+          expect(assigns(:articles)).to eq @user.articles.order(created_at: :desc).send(scope).page(1).per(10).to_a
         end
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe Admin::ArticlesController, :type => :controller do
     context 'invalid scope given' do
       it "assigns @articles with all articles" do
         get :index, page: '1', scope: 'hacking'
-        expect(assigns(:articles)).to eq @user.articles.recent.page(1).per(10).to_a
+        expect(assigns(:articles)).to eq @user.articles.order(created_at: :desc).page(1).per(10).to_a
       end
     end
     

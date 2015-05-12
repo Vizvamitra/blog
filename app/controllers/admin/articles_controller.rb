@@ -17,7 +17,7 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /users/current/articles/new
   def new
-    @article = Article.new
+    @article = Article.new(snippets: [Snippets::Text.new])
     set_meta_tags SeoInfo.new.for_new_article
   end
 
@@ -50,7 +50,7 @@ class Admin::ArticlesController < ApplicationController
   def scoped_collection
     scopes = ['all', 'published', 'not_published']
     scope = scopes.include?(params[:scope]) ? params[:scope] : 'all'
-    current_user.articles.recent.send(scope)
+    current_user.articles.order(created_at: :desc).send(scope)
   end
 
   def article_params
