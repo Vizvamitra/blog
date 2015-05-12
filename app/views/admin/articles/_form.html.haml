@@ -4,7 +4,7 @@
       = f.text_field :title, placeholder: Article.human_attribute_name(:title), class: 'form-control'
 
     .form-group{class: @article.errors[:body].present? ? 'has-error' : ''}
-      = f.text_area :body, rows: 20, class: 'form-control'
+      = react_component('SnippetManager', snippets: @article.snippets)
 
     .form-group
       = f.label :tags

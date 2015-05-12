@@ -6,4 +6,8 @@ class Snippet
   def to_partial_path
     "shared/snippets/#{self.class.name.demodulize.underscore}"
   end
+
+  def as_json opts={}
+    attributes
+  end
 end
