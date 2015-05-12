@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   get 'archive', to: 'archive#show', as: 'archive'
 
-  namespace :current_user, path: 'users' do
-    resources :articles, path: 'current/articles'
+  namespace :admin do
+    resources :articles
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

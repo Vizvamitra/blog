@@ -1,4 +1,4 @@
-class CurrentUser::ArticlesController < ApplicationController
+class Admin::ArticlesController < ApplicationController
   respond_to :html
 
   before_action :authenticate_user!
@@ -42,7 +42,7 @@ class CurrentUser::ArticlesController < ApplicationController
   # DELETE /users/current/articles/:id
   def destroy
     @article.destroy
-    redirect_to current_user_articles_path
+    redirect_to admin_articles_path
   end
 
   private
@@ -70,7 +70,7 @@ class CurrentUser::ArticlesController < ApplicationController
   end
 
   def redirect_path
-    current_user_article_path(@article) if @article.persisted?
+    admin_article_path(@article) if @article.persisted?
   end
 
 end

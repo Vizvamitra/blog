@@ -18,8 +18,8 @@
           %li{active_if_path(archive_path)}
             = link_to 'Архив', archive_path
           - if current_user
-            %li{class: (request.fullpath.match(current_user_articles_path) ? 'active' : '')}
-              = link_to 'Мои посты', current_user_articles_path
+            %li{class: (request.fullpath.match(admin_articles_path) ? 'active' : '')}
+              = link_to 'Мои посты', admin_articles_path
 
         %ul.nav.navbar-nav.navbar-right
           %li

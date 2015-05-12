@@ -19,6 +19,6 @@
 
 //= require blog
 
-//= require ./modules/disqus_fix
-//= require ./modules/syntax_highlighter
+
+//= require_directory ./modules
 //= require_directory ./widgets

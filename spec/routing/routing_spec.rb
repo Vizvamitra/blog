@@ -15,28 +15,28 @@ RSpec.describe "routes", type: :routing do
     expect(get('/archive')).to route_to('archive#show')
   end
 
-  describe 'current_user' do
+  describe 'admin' do
     it 'articles' do
-      expect(get('/users/current/articles')).to\
-        route_to('current_user/articles#index')
+      expect(get('admin/articles')).to\
+        route_to('admin/articles#index')
         
-      expect(get('/users/current/articles/5')).to\
-        route_to('current_user/articles#show', id: '5')
+      expect(get('admin/articles/5')).to\
+        route_to('admin/articles#show', id: '5')
         
-      expect(get('/users/current/articles/new')).to\
-        route_to('current_user/articles#new')
+      expect(get('admin/articles/new')).to\
+        route_to('admin/articles#new')
         
-      expect(post('/users/current/articles')).to\
-        route_to('current_user/articles#create')
+      expect(post('admin/articles')).to\
+        route_to('admin/articles#create')
         
-      expect(get('/users/current/articles/5/edit')).to\
-        route_to('current_user/articles#edit',id:'5')
+      expect(get('admin/articles/5/edit')).to\
+        route_to('admin/articles#edit',id:'5')
         
-      expect(patch('/users/current/articles/5')).to\
-        route_to('current_user/articles#update',id:'5')
+      expect(patch('admin/articles/5')).to\
+        route_to('admin/articles#update',id:'5')
         
-      expect(delete('/users/current/articles/5')).to\
-        route_to('current_user/articles#destroy',id:'5')
+      expect(delete('admin/articles/5')).to\
+        route_to('admin/articles#destroy',id:'5')
         
     end
   end

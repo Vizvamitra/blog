@@ -2,6 +2,6 @@
 
   = content_for :articles_menu do
     %li.active
-      = link_to @article.title, edit_current_user_article_path(@article)
+      = link_to @article.title, edit_admin_article_path(@article)
 
   =render 'form', article: @article
