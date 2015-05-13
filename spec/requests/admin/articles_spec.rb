@@ -136,47 +136,15 @@ RSpec.describe 'Admin/Articles' do
       
       context 'when article params are valid' do
         let(:article){ create(:article, author: @user) }
-        let(:params){ {title: 'test', body: '123'} }
+        let(:params){ {title: 'test', body: '123', snippets_attributes: {"0" => {_type: 'Snippets::Text', body: 'test'}}} }
 
         it{ should redirect_to(admin_article_path(article.reload)) }
 
         it 'updates article' do
           article.reload
-          params.each{ |k,v| expect(article[k]).to eq v }
-        end
-
-        describe 'editing snippets' do
-          let(:article){create(:article, author: @user, snippets: build_list(:text_snippet, 2))}
-
-          context 'when changing snippet data' do
-            let(:params){
-              {snippets_attributes: [
-                {
-                  _id: article.snippets.second._id,
-                  body: 'new text'
-                }
-              ]}
-            }
-
-            it 'changes snippet data' do
-              expect(article.reload.snippets.second.body).to eq 'new text'
-            end
-          end
-
-          context 'when deleting snippet' do
-            let(:params){
-              {snippets_attributes: [
-                {
-                  _id: article.snippets.first._id,
-                  _destroy: 1
-                }
-              ]}
-            }
-
-            it 'deletes snippet' do
-              expect(article.reload.snippets.count).to eq 1
-            end
-          end
+          params.except(:snippets_attributes).each{ |k,v| expect(article[k]).to eq v }
+          expect(article.snippets.count).to eq 1
+          expect(article.snippets.first.body).to eq 'test'
         end
       end
 

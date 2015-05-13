@@ -5,6 +5,7 @@ window.Snippet = React.createClass
       key: this.props.snippet._id.$oid,
       id: this.props.snippet._id.$oid,
       body: this.props.snippet.body,
+      isDeleting: this.props.snippet.isDeleting,
       i: this.props.i
     }
 
@@ -12,6 +13,10 @@ window.Snippet = React.createClass
     snippetClass = "snippet #{type}-snippet"
 
     `<div className={snippetClass}>
-      <SnippetControls type={type}/>
+      <SnippetControls type={type}
+                       i={this.props.i}
+                       onDelete={this.props.deleteSnippetFunc}
+                       onMoveUp={this.props.moveSnippetUpFunc}
+                       onMoveDown={this.props.moveSnippetDownFunc}/>
       {snippet_content}
     </div>`

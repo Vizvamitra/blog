@@ -35,7 +35,8 @@ class Admin::ArticlesController < ApplicationController
 
   # PATCH /users/current/articles/:id
   def update
-    @article.update_attributes(article_params)
+    @article.snippets.delete_all
+    @article.update(article_params)
     respond_with @article, location: redirect_path
   end
 
@@ -54,7 +55,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :description, :published, :published_at, :expires_at, tags: [], snippets_attributes: [:_id, :_type, :_destroy, :body])
+    params.require(:article).permit(:title, :body, :description, :published, :published_at, :expires_at, tags: [], snippets_attributes: [:_type, :body])
   end
 
   def set_article
