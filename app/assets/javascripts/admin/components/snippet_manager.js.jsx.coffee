@@ -2,6 +2,11 @@ window.SnippetManager = React.createClass
   getInitialState: ->
     this.props
 
+  createSnippet: (snippet)->
+    newSnippets = this.state.snippets
+    newSnippets.push(snippet)
+    this.setState({snippets: newSnippets})
+
   moveSnippetUp: (index)->
     if index > 0
       newSnippets = this.state.snippets
@@ -25,7 +30,7 @@ window.SnippetManager = React.createClass
   render: ->
     snippets = this.state.snippets.map ((snippet, i)->
       `<Snippet snippet={snippet}
-                key={snippet._id.$oid}
+                key={snippet._id}
                 i={i}
                 deleteSnippetFunc={this.deleteSnippet}
                 moveSnippetUpFunc={this.moveSnippetUp}
@@ -34,4 +39,5 @@ window.SnippetManager = React.createClass
 
     `<div id='snippets'>
       {snippets}
+      <NewSnippetBar onCreate={this.createSnippet}/>
     </div>`

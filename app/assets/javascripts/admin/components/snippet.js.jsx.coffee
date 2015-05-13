@@ -2,8 +2,7 @@ window.Snippet = React.createClass
   render: ->
     type = this.props.snippet._type.split('::').pop().toLowerCase()
     props = {
-      key: this.props.snippet._id.$oid,
-      id: this.props.snippet._id.$oid,
+      key: this.props.snippet._id,
       body: this.props.snippet.body,
       isDeleting: this.props.snippet.isDeleting,
       i: this.props.i

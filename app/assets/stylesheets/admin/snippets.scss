@@ -39,4 +39,37 @@
       }
     }
   }
+
+  #new-snippet-bar{
+    border: 2px solid #ccc;
+    text-align: center;
+    overflow: auto;
+    background-color: white;
+
+    div{padding: 0;}
+
+    a, #plus-container{
+      border-right: 1px solid #ccc;
+      color: $gray-light;
+      display: block;
+      height: 35px;
+      line-height: 35px;
+      font-size: 1.3em;
+    }
+
+    a{
+      cursor: pointer;
+      &.active, &:hover{
+        background-color: $gray-lighter;
+        color: $gray-darker;
+      }
+    }
+
+    div:last-of-type a{border: none;}
+
+    #plus-container{
+      background-color: $brand-success;
+      color: white;
+    }
+  }
 }

@@ -8,6 +8,6 @@ class Snippet
   end
 
   def as_json opts={}
-    attributes
+    attributes.merge({_id: _id.to_s})
   end
 end
