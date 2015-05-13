@@ -1,15 +1,11 @@
 window.SnippetManager = React.createClass
-  render: ->
-    snippets = this.props.snippets.map (snippet, i)->
-      type = snippet._type.split('::').pop()
-      props = {
-        key: snippet._id.$oid,
-        id: snippet._id.$oid,
-        body: snippet.body,
-        i: i
-      }
-      React.createElement(Snippets[type], props )
+  getInitialState: ->
+    this.props
 
-    `<div className='snippets'>
+  render: ->
+    snippets = this.state.snippets.map (snippet, i)->
+      `<Snippet snippet={snippet} i={i}/>`
+
+    `<div id='snippets'>
       {snippets}
     </div>`
