@@ -1,9 +1,6 @@
 window.SnippetControls = React.createClass
-  handleDelete: (e) ->
-    e.preventDefault()
-    if confirm('Вы уверены?')
-      index = this.props.i
-      this.props.onDelete(index)
+  handlePreviewModeSwitch: ->
+    this.props.onSwitchPreviewMode()
 
   handleMoveUp: (e)->
     e.preventDefault()
@@ -15,20 +12,29 @@ window.SnippetControls = React.createClass
     index = this.props.i
     this.props.onMoveDown(index)
 
+  handleDelete: (e) ->
+    e.preventDefault()
+    if confirm('Вы уверены?')
+      index = this.props.i
+      this.props.onDelete(index)
+
   render: ->
     typeIconClass = switch this.props.type
       when 'text' then 'fa fa-file-text-o'
       when 'embed' then 'fa fa-code'
+
+    editButtonClass = 'active' if !this.props.isPreviewing
+    previewButtonClass = 'active' if this.props.isPreviewing
 
     `<div className='snippet-controls'>
       <div className='col-xs-2 snippet-type'>
         <span className={typeIconClass}></span>
       </div>
       <div className='col-xs-2'>
-        <a className='active'><span className='fa fa-pencil'></span></a>
+        <a className={editButtonClass} onClick={this.handlePreviewModeSwitch}><span className='fa fa-pencil'></span></a>
       </div>
       <div className='col-xs-2'>
-        <a><span className='fa fa-eye'></span></a>
+        <a className={previewButtonClass} onClick={this.handlePreviewModeSwitch}><span className='fa fa-eye'></span></a>
       </div>
       <div className='col-xs-2'>
         <a onClick={this.handleMoveUp}><span className='fa fa-chevron-up'></span></a>
