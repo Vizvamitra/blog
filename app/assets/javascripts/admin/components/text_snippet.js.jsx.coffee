@@ -6,8 +6,13 @@ Snippets['text'] = React.createClass
     {previewId: id}
 
   componentDidUpdate: ->
-    $("##{this.state.previewId} pre code").each ->
-      hljs.highlightBlock(this)
+    this.highlightPreview()
+
+  componentDidMount: ->
+    this.highlightPreview()
+
+  highlightPreview: ->
+    Blog['SyntaxHighlighter'].init("##{this.state.previewId}")
 
   name_for: (field)->
     "article[snippets_attributes][][#{field}]"

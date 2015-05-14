@@ -1,6 +1,6 @@
 Blog.define 'SyntaxHighlighter', ->
   return{
-    init: ->
-      $('pre code').each ->
+    init: (scope = '')->
+      $("#{scope} pre code").each ->
         hljs.highlightBlock(this)
   }

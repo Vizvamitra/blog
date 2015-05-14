@@ -2,10 +2,13 @@ window.Snippets ||= {}
 
 Snippets['embed'] = React.createClass
   componentDidUpdate: ->
-    fluidvids.init({
-      selector: ['iframe', 'object'],
-      players: ['www.youtube.com', 'player.vimeo.com', 'otvi']
-    })
+    this.reinitFluidVids()
+
+  componentDidMount: ->
+    this.reinitFluidVids()
+
+  reinitFluidVids: ->
+    Blog['FluidVids'].init()
 
   name_for: (field)->
     "article[snippets_attributes][][#{field}]"
