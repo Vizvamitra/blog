@@ -7,8 +7,7 @@
       = react_component('SnippetManager', snippets: @article.snippets)
 
     .form-group
-      = f.label :tags
-      #tag-box{data: {'tags-input-name' => 'article[tags]'}}= @article.tags.join(', ')
+      #tag-box{data: {tags: @article.tags}}
 
     .form-group
       = f.text_area :description, placeholder: Article.human_attribute_name(:description), rows: 3, class: 'form-control'

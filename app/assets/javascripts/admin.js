@@ -1,7 +1,7 @@
 //= require react
 //= require react_ujs
 //= require jquery.datetimepicker
-//= require tagging.min
+//= require taggle.min
 //= require marked.min
 
 //= require ./admin/components
