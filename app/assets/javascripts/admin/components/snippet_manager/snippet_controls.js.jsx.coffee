@@ -1,6 +1,9 @@
 window.SnippetControls = React.createClass
-  handlePreviewModeSwitch: ->
-    this.props.onSwitchPreviewMode()
+  handleEnterPreviewMode: (e)->
+    this.props.onEnterPreviewMode() if !this.props.isPreviewing
+
+  handleEnterEditMode: (e)->
+    this.props.onEnterEditMode() if this.props.isPreviewing
 
   handleMoveUp: (e)->
     e.preventDefault()
@@ -31,10 +34,10 @@ window.SnippetControls = React.createClass
         <span className={typeIconClass}></span>
       </div>
       <div className='col-xs-2'>
-        <a className={editButtonClass} onClick={this.handlePreviewModeSwitch}><span className='fa fa-pencil'></span></a>
+        <a className={editButtonClass} onClick={this.handleEnterEditMode}><span className='fa fa-pencil'></span></a>
       </div>
       <div className='col-xs-2'>
-        <a className={previewButtonClass} onClick={this.handlePreviewModeSwitch}><span className='fa fa-eye'></span></a>
+        <a className={previewButtonClass} onClick={this.handleEnterPreviewMode}><span className='fa fa-eye'></span></a>
       </div>
       <div className='col-xs-2'>
         <a onClick={this.handleMoveUp}><span className='fa fa-chevron-up'></span></a>

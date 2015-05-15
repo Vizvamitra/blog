@@ -2,8 +2,11 @@ window.Snippet = React.createClass
   getInitialState: ->
     {isPreviewing: false}
 
-  switchPreviewMode: ->
-    this.setState({isPreviewing: !this.state.isPreviewing})
+  enterPreviewMode: ->
+    this.setState({isPreviewing: true})
+
+  enterEditMode: ->
+    this.setState({isPreviewing: false})
 
   render: ->
     type = this.props.snippet._type.split('::').pop().toLowerCase()
@@ -21,7 +24,8 @@ window.Snippet = React.createClass
       <SnippetControls type={type}
                        i={this.props.i}
                        isPreviewing={this.state.isPreviewing}
-                       onSwitchPreviewMode={this.switchPreviewMode}
+                       onEnterPreviewMode={this.enterPreviewMode}
+                       onEnterEditMode={this.enterEditMode}
                        onMoveUp={this.props.moveSnippetUpFunc}
                        onMoveDown={this.props.moveSnippetDownFunc}
                        onDelete={this.props.deleteSnippetFunc}/>
