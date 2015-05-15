@@ -1,6 +1,6 @@
 module Snippets
   class Embed < Snippet
-    field :body, type: String
+    field :body, type: String, default: ''
 
     validates_presence_of :body
   end

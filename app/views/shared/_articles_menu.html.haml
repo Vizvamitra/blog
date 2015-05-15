@@ -12,6 +12,6 @@
         = link_to 'Не опубликованные', admin_articles_path(scope: 'not_published')
 
       %li{active_if_path(new_admin_article_path)}
-        = link_to 'Новый', new_admin_article_path
+        = link_to 'Новый', new_admin_article_path, data: { no_turbolink: true }
 
       = yield :articles_menu

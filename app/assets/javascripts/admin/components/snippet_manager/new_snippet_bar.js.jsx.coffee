@@ -1,11 +1,14 @@
 window.NewSnippetBar = React.createClass
   onCreateTextSnippet: ->
-    snippet = {_type: 'Snippets::Text'}
+    snippet = {_type: 'Snippets::Text', body: '', _id: this.uniqueId()}
     this.props.onCreate(snippet)
 
   onCreateEmbedSnippet: ->
-    snippet = {_type: 'Snippets::Embed'}
+    snippet = {_type: 'Snippets::Embed', body: '', _id: this.uniqueId()}
     this.props.onCreate(snippet)
+
+  uniqueId: ->
+    Math.random().toString(36).substr(2,14)
 
   render: ->
     `<div id='new-snippet-bar'>

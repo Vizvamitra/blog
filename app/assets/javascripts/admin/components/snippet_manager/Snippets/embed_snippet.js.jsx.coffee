@@ -2,12 +2,22 @@ window.Snippets ||= {}
 
 Snippets['embed'] = React.createClass
   componentDidUpdate: ->
-    this.reinitFluidVids()
+    this.initPreview() if this.props.isPreviewing
 
   componentDidMount: ->
-    this.reinitFluidVids()
+    this.initPreview() if this.props.isPreviewing
 
-  reinitFluidVids: ->
+  initPreview: ->
+    this.setPreviewHtml()
+    this.preparePreview()
+
+  setPreviewHtml: ->
+    body = React.findDOMNode(this.refs.body)
+    preview = React.findDOMNode(this.refs.preview)
+
+    $(preview).html(body.value)
+
+  preparePreview: ->
     Blog['FluidVids'].init()
 
   name_for: (field)->
@@ -20,9 +30,13 @@ Snippets['embed'] = React.createClass
     `<div className='snippet-main-area'>
       <div className={editClass}>
         <input type='hidden' name={this.name_for('_type')} value='Snippets::Embed'/>
-        <textarea name={this.name_for('body')} className='form-control' rows={4} defaultValue={this.props.body}/>
+        <textarea name={this.name_for('body')}
+                  ref='body'
+                  className='form-control'
+                  rows={4}
+                  defaultValue={this.props.body}/>
       </div>
       <div className={previewClass}>
-        <div dangerouslySetInnerHTML={{__html: this.props.body}}/>
+        <div className='text-snippet-body' ref='preview'/>
       </div>
     </div>`

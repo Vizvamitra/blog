@@ -7,7 +7,7 @@
   %article.one-layer-up
     %header
       .edit-link
-        = link_to fa_icon('pencil lg'), edit_admin_article_path(@article), class: 'pull-right'
+        = link_to fa_icon('pencil lg'), edit_admin_article_path(@article), class: 'pull-right', data: { no_turbolink: true }
       %h1= @article.title
 
       .tags

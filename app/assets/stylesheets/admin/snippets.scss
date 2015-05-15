@@ -7,6 +7,8 @@
   .snippet{
     margin-bottom: 10px;
     background-color: white;
+    transition: all 500ms ease;
+    box-sizing: border-box;
 
     .preview{
       padding: 10px;

@@ -27,7 +27,7 @@
                 %h4= link_to article.title, admin_article_path(article)
               .controls.col-xs-3
                 = link_to fa_icon('file-text lg'), admin_article_path(article)
-                = link_to fa_icon('pencil lg'), edit_admin_article_path(article)
+                = link_to fa_icon('pencil lg'), edit_admin_article_path(article), data: { no_turbolink: true }
                 = link_to fa_icon('times-circle lg'), admin_article_path(article), method: :delete, data: {confirm: 'Вы уверены?'}
 
     .pages
