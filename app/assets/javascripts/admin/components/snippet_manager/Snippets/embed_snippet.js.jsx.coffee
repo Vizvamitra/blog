@@ -34,7 +34,7 @@ Snippets['embed'] = React.createClass
                   ref='body'
                   className='form-control'
                   rows={4}
-                  defaultValue={this.props.body}/>
+                  defaultValue={this.props.snippet.body}/>
       </div>
       <div className={previewClass}>
         <div className='text-snippet-body' ref='preview'/>

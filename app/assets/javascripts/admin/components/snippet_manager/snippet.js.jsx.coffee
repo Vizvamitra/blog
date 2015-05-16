@@ -12,8 +12,7 @@ window.Snippet = React.createClass
     type = this.props.snippet._type.split('::').pop().toLowerCase()
     props = {
       i: this.props.i,
-      _id: this.props.snippet._id
-      body: this.props.snippet.body,
+      snippet: this.props.snippet,
       isPreviewing: this.state.isPreviewing
     }
 

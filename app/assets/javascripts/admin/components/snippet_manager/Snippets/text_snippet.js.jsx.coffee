@@ -24,7 +24,7 @@ Snippets['text'] = React.createClass
     "article[snippets_attributes][][#{field}]"
 
   previewId: ->
-    "preview_#{this.props._id}"
+    "preview_#{this.props.snippet._id}"
 
   render: ->
     editClass = 'edit' + (if this.props.isPreviewing then ' hidden' else '')
@@ -37,7 +37,7 @@ Snippets['text'] = React.createClass
                   ref='body'
                   className='form-control'
                   rows={15}
-                  defaultValue={this.props.body}/>
+                  defaultValue={this.props.snippet.body}/>
       </div>
       <div className={previewClass} id={this.previewId()}>
         <div className='text-snippet-body' ref='preview'/>

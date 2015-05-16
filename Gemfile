@@ -22,12 +22,12 @@ gem 'sprockets', '2.12.3'
 gem 'sprockets-rails', '2.2.2'
 gem 'meta-tags', '~> 2.0.0'
 gem 'mongoid_rails_migrations'
-gem 'react-rails', '~> 1.0'
 
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
 gem "font-awesome-rails"
 gem 'jquery-datetimepicker-rails', '~> 2.4.1.0'
+gem 'react-rails', '~> 1.0'
 
 # gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn', '~> 4.8.3'
