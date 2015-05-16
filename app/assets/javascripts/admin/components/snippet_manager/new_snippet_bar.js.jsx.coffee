@@ -1,10 +1,20 @@
 window.NewSnippetBar = React.createClass
   onCreateTextSnippet: ->
-    snippet = {_type: 'Snippets::Text', body: '', _id: this.uniqueId()}
+    snippet = {
+      _type: 'Snippets::Text', 
+      _id: this.uniqueId(),
+      body: '',
+      isNewRecord: true
+    }
     this.props.onCreate(snippet)
 
   onCreateEmbedSnippet: ->
-    snippet = {_type: 'Snippets::Embed', body: '', _id: this.uniqueId()}
+    snippet = {
+      _type: 'Snippets::Embed', 
+      _id: this.uniqueId(),
+      body: '',
+      isNewRecord: true
+    }
     this.props.onCreate(snippet)
 
   uniqueId: ->

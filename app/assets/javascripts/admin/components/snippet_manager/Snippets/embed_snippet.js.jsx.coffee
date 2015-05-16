@@ -29,7 +29,6 @@ Snippets['embed'] = React.createClass
 
     `<div className='snippet-main-area'>
       <div className={editClass}>
-        <input type='hidden' name={this.name_for('_type')} value='Snippets::Embed'/>
         <textarea name={this.name_for('body')}
                   ref='body'
                   className='form-control'

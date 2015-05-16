@@ -135,16 +135,39 @@ RSpec.describe 'Admin/Articles' do
       let(:request){ ->{patch admin_article_path(article.id), article: params} }
       
       context 'when article params are valid' do
-        let(:article){ create(:article, author: @user) }
-        let(:params){ {title: 'test', body: '123', snippets_attributes: {"0" => {_type: 'Snippets::Text', body: 'test'}}} }
+        let(:article){ create(:article, author: @user, snippets: [Snippets::Text.new(body: 'snippet1'), Snippets::Embed.new(body: 'snippet2')]) }
+        let(:params){ {title: 'new title'} }
 
         it{ should redirect_to(admin_article_path(article.reload)) }
 
-        it 'updates article' do
-          article.reload
-          params.except(:snippets_attributes).each{ |k,v| expect(article[k]).to eq v }
-          expect(article.snippets.count).to eq 1
-          expect(article.snippets.first.body).to eq 'test'
+        describe 'when creating snippet' do
+          let(:params){ {snippets_attributes: {"0" => {_type: 'Snippets::Text', body: 'test'}}} }
+
+          it 'creates new snippet on given position' do
+            article.reload
+            expect(article.snippets.count).to eq 3
+            expect(article.snippets.last.body).to eq 'test'
+          end
+        end
+
+        describe 'when updating snippet' do
+          let(:params){ {snippets_attributes: {"0" => {_id: article.snippets.first._id.to_s, _type: 'Snippets::Text', body: 'test'}}} }
+
+          it 'updates snippet' do
+            article.reload
+            expect(article.snippets.count).to eq 2
+            expect(article.snippets.first.body).to eq 'test'
+          end
+        end
+
+        describe 'when destroying snippet' do
+          let(:params){ {snippets_attributes: {"0" => {_id: article.snippets.first._id.to_s, _type: 'Snippets::Text', body: 'test', _destroy: true}}} }
+
+          it 'destroys snippet' do
+            article.reload
+            expect(article.snippets.count).to eq 1
+            expect(article.snippets.first.body).to eq 'snippet2'
+          end
         end
       end
 

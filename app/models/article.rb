@@ -15,7 +15,7 @@ class Article
   include Publishable
 
   belongs_to :author, class_name: 'User'
-  embeds_many :snippets
+  embeds_many :snippets, cascade_callbacks: true
 
   accepts_nested_attributes_for :snippets, allow_destroy: true
 

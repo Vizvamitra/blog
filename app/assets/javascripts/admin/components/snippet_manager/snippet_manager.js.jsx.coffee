@@ -24,7 +24,10 @@ window.SnippetManager = React.createClass
   deleteSnippet: (index)->
     if index >= 0 && index < this.state.snippets.length
       newSnippets = this.state.snippets
-      newSnippets.splice(index, 1)
+      if newSnippets[index].isNewRecord
+        newSnippets.splice(index, 1)
+      else
+        newSnippets[index].isDeleting = true
       this.setState({snippets: newSnippets})
 
   render: ->

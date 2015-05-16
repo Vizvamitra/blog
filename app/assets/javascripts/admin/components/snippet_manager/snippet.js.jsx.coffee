@@ -11,13 +11,13 @@ window.Snippet = React.createClass
   render: ->
     type = this.props.snippet._type.split('::').pop().toLowerCase()
     props = {
-      i: this.props.i,
       snippet: this.props.snippet,
       isPreviewing: this.state.isPreviewing
     }
 
-    snippet_content = React.createElement(Snippets[type], props )
+    snippetContent = React.createElement(Snippets[type], props )
     snippetClass = "snippet #{type}-snippet"
+    snippetClass += ' hidden' if this.props.snippet.isDeleting
 
     `<div className={snippetClass}>
       <SnippetControls type={type}
@@ -28,5 +28,9 @@ window.Snippet = React.createClass
                        onMoveUp={this.props.moveSnippetUpFunc}
                        onMoveDown={this.props.moveSnippetDownFunc}
                        onDelete={this.props.deleteSnippetFunc}/>
-      {snippet_content}
+
+      <SnippetHiddenFields snippet={this.props.snippet}
+                           i = {this.props.i}/>
+
+      {snippetContent}
     </div>`

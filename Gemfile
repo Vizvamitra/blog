@@ -22,6 +22,7 @@ gem 'sprockets', '2.12.3'
 gem 'sprockets-rails', '2.2.2'
 gem 'meta-tags', '~> 2.0.0'
 gem 'mongoid_rails_migrations'
+gem 'mongoid_orderable'
 
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
