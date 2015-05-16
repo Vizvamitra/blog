@@ -43,7 +43,7 @@ group :development do
   gem 'progress_bar', '~> 1.0.3'
 
   gem 'capistrano', '~>3.2.1'
-  gem 'capistrano-rails', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano-bundler', '~> 1.1.3'
   gem 'capistrano-rvm', '~> 0.1.2'
   gem 'capistrano3-unicorn', '~> 0.2.1'
