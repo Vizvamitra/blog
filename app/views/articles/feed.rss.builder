@@ -4,7 +4,7 @@ xml.rss :version => "2.0" do
     xml.title "Vizvamitra's blog"
     xml.description "Vizvamitra's blog"
     xml.link root_url
-    xml.pubDate DateTime.now
+    xml.pubDate DateTime.now.rfc2822
     xml.language "ru"
     xml.copyright "Copyright 2014-#{Date.today.year} Dmitrii Krasnov"
 
@@ -12,7 +12,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title{ xml.cdata!(article.title) }
         xml.author article.author.name.capitalize
-        xml.pubDate article.published_at.to_s(:rfc822)
+        xml.pubDate article.published_at.rfc2822
         xml.link article_url(article)
         xml.guid article_url(article), isPermalink: true
         xml.description do
