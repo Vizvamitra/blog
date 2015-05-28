@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
   # GET /articles/feed
   def feed
     @articles = Article.published.recent
+    response.headers['Content-Type'] = 'text/xml; charset=utf-8'
   end
 
 end
