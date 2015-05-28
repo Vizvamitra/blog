@@ -7,7 +7,7 @@ class Article
   field :description, type: String
   field :body, type: String
   field :tags, type: Array, default: []
-  field :published, type: Boolean
+  field :published, type: Boolean, default: false
   field :published_at, type: DateTime
   field :expires_at, type: DateTime
   slug  :title, history: true
