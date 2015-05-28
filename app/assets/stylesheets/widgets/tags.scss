@@ -3,8 +3,13 @@
   padding: 10px 15px 15px;
 
   form{
+    .input-group{
+      width: 100%;
+    }
+
     .input-group-btn button{
       margin-top: -2px;
+      width:100%
     }
 
     input[type=text]{

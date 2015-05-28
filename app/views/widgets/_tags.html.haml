@@ -12,4 +12,4 @@
       - tags.each do |tag|
         %li.list-group-item
           %span.badge= tag.count
-          = link_to "##{tag.name}", root_path(tags: [tag])
+          = link_to "##{tag.name}", root_path(tags: [tag]), rel: 'nofollow'

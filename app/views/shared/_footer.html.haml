@@ -7,7 +7,7 @@
           = link_to 'Выйти', destroy_user_session_path, method: :delete
           )
         - else
-          = link_to 'Войти', new_user_session_path, class: 'text-muted'
+          = link_to 'Войти', new_user_session_path, class: 'text-muted', rel: 'nofollow'
       %p.navbar-text.navbar-right
         %span.text-muted Created by 
         = link_to 'Vizvamitra', 'http://github.com/vizvamitra'
