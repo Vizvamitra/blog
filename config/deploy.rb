@@ -25,6 +25,9 @@ set :linked_files, %w{config/mongoid.yml config/secrets.yml config/unicorn/produ
 set :linked_dirs, %w{log tmp/pids tmp/cache public/uploads}
 
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 

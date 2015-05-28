@@ -23,6 +23,8 @@ gem 'sprockets-rails', '2.2.2'
 gem 'meta-tags', '~> 2.0.0'
 gem 'mongoid_rails_migrations', '~> 1.1.0'
 gem 'mongoid_orderable', '~> 4.1.1'
+gem 'sitemap_generator', '~> 5.0.5'
+gem 'whenever', '~> 0.9.4', require: false
 
 gem 'haml', '~> 4.0.6'
 gem 'bootstrap-sass', '~> 3.3.4.1'
