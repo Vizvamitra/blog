@@ -21,4 +21,7 @@
 
 every :day, at: '4.30 am' do
   rake 'sitemap:refresh'
+
+  # handle article delayed publication / expiration
+  runner 'RecalculateTagsJob.perform_later'
 end
