@@ -1,5 +1,5 @@
 xml.instruct! :xml, :version => "1.0"
-xml.rss :version => "2.0" do
+xml.rss :version => "2.0", 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
   xml.channel do
     xml.title "Vizvamitra's blog"
     xml.description "Vizvamitra's blog"
@@ -7,6 +7,7 @@ xml.rss :version => "2.0" do
     xml.pubDate DateTime.now.rfc2822
     xml.language "ru"
     xml.copyright "Copyright 2014-#{Date.today.year} Dmitrii Krasnov"
+    xml.tag! 'atom:link', nil, href: feed_articles_url, rel: 'self', type: 'application/rss+xml'
 
     @articles.each do |article|
       xml.item do
